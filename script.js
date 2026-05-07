@@ -164,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeSuccessBtn = document.getElementById('closeSuccessBtn');
     const openModalBtns = document.querySelectorAll('.js-open-modal');
     
+    // Store selected product if they come from a specific card
+    let selectedProductFromCard = '';
+    
     const steps = Array.from(document.querySelectorAll('.form-step'));
     const nextBtns = document.querySelectorAll('.btn-next');
     const prevBtns = document.querySelectorAll('.btn-prev');
@@ -224,10 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
     openModalBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            // Capture the product name if the button came from a product card
+            const product = btn.getAttribute('data-product');
+            selectedProductFromCard = product ? product.trim() : '';
+            
             budgetModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             currentStep = 0;
             updateSteps();
+            budgetForm.reset();
+            budgetForm.classList.remove('hidden');
+            modalSuccess.classList.add('hidden');
         });
     });
     
@@ -279,7 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('clientName').value;
         const phone = document.getElementById('clientPhone').value;
         
-        const text = `*ORÇAMENTO PELO SITE*%0A%0A*1. Imóvel:* ${type}%0A*2. Metragem:* ${meters} metros%0A*3. Local:* ${address}%0A%0A*Cliente:* ${name}%0A*Contato:* ${phone}%0A%0A_Olá, gostaria de saber o valor estimado para instalar concertina._`;
+        // Build product line if a specific product was selected
+        const productLine = selectedProductFromCard
+            ? `%0A*Serviço de interesse:* ${encodeURIComponent(selectedProductFromCard)}`
+            : '';
+        
+        const text = `*ORÇAMENTO PELO SITE*${productLine}%0A%0A*1. Imóvel:* ${type}%0A*2. Metragem:* ${meters} metros%0A*3. Local:* ${address}%0A%0A*Cliente:* ${name}%0A*Contato:* ${phone}%0A%0A_Olá, gostaria de saber o valor estimado._`;
         
         budgetForm.classList.add('hidden');
         modalSuccess.classList.remove('hidden');
