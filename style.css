@@ -296,6 +296,208 @@ ul {
 
 .badge-dot {
     width: 8px;
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(251, 146, 60, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color) !important;
+    border: 1px solid rgba(26, 54, 93, 0.3);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(26, 54, 93, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp-color);
+    color: #fff !important;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ed760;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-large {
+    padding: 1rem 2.25rem;
+    font-size: 1.05rem;
+}
+
+/* --- Sections & Layout Respiro --- */
+.section {
+    padding: 6rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 6rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.section-subtitle {
+    font-size: 1.35rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Header & Layout de CÃ¡psula Lado a Lado --- */
+.header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    top: 10px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245, 243, 236, 0.9); /* Off-white slightly translucent */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 9999px;
+    padding: 0.5rem 1.75rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+    height: auto;
+    gap: 3rem;
+}
+
+/* --- Brand Floating Logo (Outside the bar) --- */
+.brand-floating-logo {
+    position: fixed;
+    top: 30px;
+    left: 8%; /* Afasta mais do canto e alinha de forma fluida */
+    z-index: 1005; /* Acima do header */
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.brand-floating-logo img {
+    height: 95px; /* Tamanho muito mais robusto e imponente */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.logo-img-footer {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.nav {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+.nav a:hover {
+    color: var(--accent-color);
+}
+
+.svg-icon {
+    stroke: var(--accent-color);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-main);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* --- Hero Section - Redesigned Left/Right --- */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: left;
+    max-width: 650px;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #ffffff;
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    /* FIX: prevent layout shift when text rotates */
+    height: 2.4rem;          /* Fixed height — never changes */
+    min-width: 340px;        /* Wide enough for the longest phrase */
+    max-width: 100%;         /* Don't overflow on mobile */
+    white-space: nowrap;     /* Never wraps to second line */
+    overflow: hidden;        /* Safety: clips if somehow overflows */
+    justify-content: center; /* Keep dot+text centered */
+}
+
+.badge-dot {
+    width: 8px;
     height: 8px;
     background-color: #10b981; /* Verde conforme solicitado */
     border-radius: 50%;
@@ -305,6 +507,7 @@ ul {
     display: inline-block;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
+    white-space: nowrap; /* never breaks into second line */
 }
 
 .fade-text.hidden {
@@ -1792,7 +1995,7 @@ ul {
 }
 
 /* ============================================
-   PRODUCTS SECTION � REDESIGN PREMIUM
+   PRODUCTS SECTION  REDESIGN PREMIUM
    ============================================ */
 
 .products-section {
@@ -1852,7 +2055,7 @@ ul {
     gap: 1.5rem;
 }
 
-/* Product Card � Standard */
+/* Product Card  Standard */
 .product-card {
     background: #ffffff;
     border-radius: 20px;
@@ -1988,7 +2191,7 @@ ul {
     display: none;
 }
 
-/* --- ALSO SECTION (Produtos Secund�rios) --- */
+/* --- ALSO SECTION (Produtos Secundrios) --- */
 .also-section {
     margin-top: 6rem;
     padding: 4.5rem;
