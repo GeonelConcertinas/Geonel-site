@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const badgeText = document.getElementById('badge-text');
     if (badgeText) {
         const phrases = [
-            "Venda e Instalação de Concertinas no RJ",
+            "Venda e Instalação de sistemas de segurança perimetral no RJ",
             "Tire suas Dúvidas pelo WhatsApp 💬",
             "Proteção Real para sua Casa e Empresa"
         ];
