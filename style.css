@@ -3618,6 +3618,69 @@ ul {
 }
 
 
+/* ============================================
+   OUTROS SERVIÇOS PAGE — Layout Styles
+   ============================================ */
+
+.outros-servicos-main {
+    padding: 8rem 0 5rem;
+    background: var(--bg-light, #f8fafc);
+}
+
+/* Lista de cards da página de serviços — empilha verticalmente */
+.complementary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* cada .comp-card já tem margin-bottom: 2rem via CSS */
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* Ajuste do section-header nessa página */
+.outros-servicos-main .section-header {
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   OUTROS SERVIÇOS — MOBILE FIXES
+   ============================================ */
+@media (max-width: 768px) {
+    .outros-servicos-main {
+        padding: 6rem 0 3rem;
+    }
+    .complementary-list {
+        margin-top: 2rem;
+    }
+    /* Garantir que os textos dos cards sejam visíveis */
+    .comp-card__name {
+        color: var(--text-dark) !important;
+        font-size: 1.3rem !important;
+    }
+    .comp-card__desc {
+        color: var(--text-muted) !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    .comp-tag {
+        display: inline-block !important;
+        visibility: visible !important;
+    }
+    .comp-cta-btn {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    /* Ensure testimonials section renders correctly */
+    .section.testimonials {
+        overflow: visible;
+    }
+    .testimonials-platforms-bar {
+        width: calc(100% - 2rem);
+        max-width: 100%;
+    }
+}
+
 /* --- FINAL MOBILE FIXES --- */
 @media (max-width: 768px) {
     /* Hamburger Menu floating box style */

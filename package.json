@@ -1,0 +1,14 @@
+{
+  "name": "geonel-site",
+  "version": "1.0.0",
+  "description": "Website for Geonel Concertinas",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --port 3000 --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
