@@ -496,6 +496,15 @@ ul {
     justify-content: center; /* Keep dot+text centered */
 }
 
+@media (max-width: 768px) {
+    .badge {
+        min-width: unset;    /* Remove min-width to prevent horizontal overflow */
+        font-size: 0.75rem;  /* Optimize font size for small viewports */
+        padding: 0.5rem 1rem;
+        letter-spacing: 0.5px;
+    }
+}
+
 .badge-dot {
     width: 8px;
     height: 8px;
