@@ -208,7 +208,7 @@ ul {
 }
 
 .header.scrolled .logo img {
-    height: 75px;
+    height: 100px; /* mantém tamanho ao rolar */
 }
 
 .logo-img-footer {
@@ -375,9 +375,11 @@ ul {
 }
 
 .header.scrolled {
-    background-color: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    background-color: rgba(245, 243, 236, 0.97); /* cor do site, quase opaca */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     padding: 0.75rem 0;
 }
 
@@ -409,7 +411,7 @@ ul {
 }
 
 .header.scrolled .logo img {
-    height: 75px;
+    height: 100px; /* mantém o mesmo tamanho ao rolar */
 }
 
 .logo-img-footer {
@@ -3234,10 +3236,13 @@ ul {
     }
     
     .header.scrolled {
-        background-color: #ffffff;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        background-color: rgba(245, 243, 236, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         padding: 0;
     }
+
 
     .header .container {
         height: 100%;
@@ -3255,7 +3260,7 @@ ul {
     }
 
     .header.scrolled .logo img {
-        height: 52px;
+        height: 58px; /* mantém tamanho ao rolar no mobile */
     }
 
     .header-btn {
