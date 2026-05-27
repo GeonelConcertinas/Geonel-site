@@ -201,14 +201,14 @@ ul {
 }
 
 .header .logo img {
-    height: 52px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: height 0.3s ease;
 }
 
 .header.scrolled .logo img {
-    height: 44px;
+    height: 75px;
 }
 
 .logo-img-footer {
@@ -402,14 +402,14 @@ ul {
 }
 
 .header .logo img {
-    height: 52px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: height 0.3s ease;
 }
 
 .header.scrolled .logo img {
-    height: 44px;
+    height: 75px;
 }
 
 .logo-img-footer {
@@ -3223,7 +3223,7 @@ ul {
         left: 0;
         right: 0;
         width: 100%;
-        height: 65px; /* strictly between 60px and 70px */
+        height: 75px; /* increased to fit bigger logo */
         padding: 0;
         display: flex;
         align-items: center;
@@ -3250,12 +3250,12 @@ ul {
     }
 
     .header .logo img {
-        height: 44px;
+        height: 58px;
         transition: height 0.3s ease;
     }
 
     .header.scrolled .logo img {
-        height: 40px;
+        height: 52px;
     }
 
     .header-btn {
