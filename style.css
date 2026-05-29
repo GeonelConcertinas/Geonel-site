@@ -3142,6 +3142,10 @@ ul {
     margin: 0;
 }
 
+.product-card > .product-tag {
+    margin: 1.5rem 1.5rem 0.75rem 1.5rem;
+}
+
 /* ============================================
    RESPONSIVE — PRODUCTS SECTION FULL
    ============================================ */
