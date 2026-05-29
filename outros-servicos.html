@@ -9,6 +9,38 @@
       gtag('js', new Date());
       gtag('config', 'AW-17942918007');
     </script>
+
+    <!-- Google Ads Event Snippets -->
+    <script>
+    function gtag_report_conversion_whatsapp(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC',
+          'event_callback': callback
+      });
+      return false;
+    }
+
+    function gtag_report_conversion_phone(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17942918007/6d05CLKi5LUcEPfm7OtC',
+          'value': 1.0,
+          'currency': 'BRL',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outros Serviços - Geonel Segurança Perimetral</title>

@@ -11,6 +11,38 @@
   gtag('config', 'AW-17942918007');
 </script>
 
+<!-- Google Ads Event Snippets -->
+<script>
+function gtag_report_conversion_whatsapp(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC',
+      'event_callback': callback
+  });
+  return false;
+}
+
+function gtag_report_conversion_phone(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17942918007/6d05CLKi5LUcEPfm7OtC',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geonel Segurança Perimetral - Instalação de sistemas de segurança perimetral no RJ</title>
@@ -609,8 +641,11 @@
     <section class="section cta-section">
         <div class="container text-center">
             <h2 class="cta-title reveal">Pronto para proteger <span class="italic-accent">o que é seu?</span></h2>
-            <p class="cta-text reveal">Fale com a gente agora pelo WhatsApp. Respondemos rápido, fazemos o orçamento no mesmo dia e explicamos tudo sem enrolação.</p>
-            <a href="https://wa.me/5521964416652" class="btn btn-primary btn-large reveal js-open-modal" target="_blank" rel="noopener noreferrer">Falar com a Geonel agora</a>
+            <p class="cta-text reveal">Fale com a gente agora por WhatsApp ou ligue diretamente para a nossa central.</p>
+            <div class="cta-buttons reveal" style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="https://wa.me/5521964416652" class="btn btn-primary btn-large js-open-modal" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+                <a href="tel:+5521964416652" class="btn btn-secondary btn-large cta-phone-btn">Ligar para a Geonel</a>
+            </div>
         </div>
     </section>
 

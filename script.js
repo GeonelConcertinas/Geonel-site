@@ -300,8 +300,50 @@ document.addEventListener('DOMContentLoaded', () => {
         budgetForm.classList.add('hidden');
         modalSuccess.classList.remove('hidden');
         
+        // Google Ads conversion for WhatsApp lead
+        if (typeof gtag_report_conversion_whatsapp === 'function') {
+            gtag_report_conversion_whatsapp();
+        } else {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC'
+            });
+        }
+        
         setTimeout(() => {
             window.open(`https://wa.me/5521964416652?text=${text}`, '_blank');
         }, 1500);
+    });
+
+    // --- Google Ads Conversion Tracking ---
+    
+    // Telephone button click tracking
+    const phoneBtn = document.querySelector('.cta-phone-btn');
+    if (phoneBtn) {
+        phoneBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = phoneBtn.getAttribute('href');
+            if (typeof gtag_report_conversion_phone === 'function') {
+                gtag_report_conversion_phone(url);
+            } else {
+                window.location.href = url;
+            }
+        });
+    }
+
+    // Direct WhatsApp and Modal trigger click tracking
+    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
+    whatsappElements.forEach(element => {
+        element.addEventListener('click', () => {
+            if (typeof gtag_report_conversion_whatsapp === 'function') {
+                const url = element.getAttribute('href');
+                if (url && url.includes('wa.me')) {
+                    gtag_report_conversion_whatsapp(url);
+                } else {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC'
+                    });
+                }
+            }
+        });
     });
 });
