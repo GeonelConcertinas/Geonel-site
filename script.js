@@ -334,6 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const whatsappElements = document.querySelectorAll('a[href*="wa.me"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
     whatsappElements.forEach(element => {
         element.addEventListener('click', () => {
+            // Se o elemento é para abrir o modal, não redirecionamos direto para o WhatsApp no clique
+            // O formulário do modal lidará com seu próprio rastreamento e redirecionamento no submit
+            if (element.classList.contains('js-open-modal')) {
+                return;
+            }
+
             if (typeof gtag_report_conversion_whatsapp === 'function') {
                 const url = element.getAttribute('href');
                 if (url && url.includes('wa.me')) {
