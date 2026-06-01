@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         setTimeout(() => {
-            window.open(`https://wa.me/5521964416652?text=${text}`, '_blank');
+            window.open(`https://wa.me/5521974372750?text=${text}`, '_blank');
         }, 1500);
     });
 
