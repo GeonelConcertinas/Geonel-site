@@ -1221,6 +1221,21 @@ ul {
     font-weight: 400;
 }
 
+.cta-section .btn-secondary {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cta-section .btn-secondary:hover {
+    background-color: #ffffff !important;
+    color: var(--primary-color) !important;
+    border-color: #ffffff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2) !important;
+}
+
 /* --- Footer Redesigned --- */
 .dark-footer {
     background-color: #020617; /* Very dark blue, almost black */
