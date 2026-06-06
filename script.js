@@ -297,6 +297,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const text = `*ORÇAMENTO PELO SITE*${productLine}%0A%0A*1. Imóvel:* ${type}%0A*2. Metragem:* ${meters} metros%0A*3. Local:* ${address}%0A%0A*Cliente:* ${name}%0A*Contato:* ${phone}%0A%0A_Olá, gostaria de saber o valor estimado._`;
         
+        // Abre o WhatsApp imediatamente (ainda dentro do evento de submit),
+        // pois iOS/Safari bloqueia window.open chamado dentro de setTimeout
+        // por não reconhecer como gesto direto do usuário.
+        window.open(`https://wa.me/5521974372750?text=${text}`, '_blank');
+
         budgetForm.classList.add('hidden');
         modalSuccess.classList.remove('hidden');
         
@@ -308,10 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC'
             });
         }
-        
-        setTimeout(() => {
-            window.open(`https://wa.me/5521974372750?text=${text}`, '_blank');
-        }, 1500);
     });
 
     // --- Google Ads Conversion Tracking ---
