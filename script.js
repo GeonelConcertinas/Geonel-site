@@ -205,9 +205,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     };
 
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwQ4hKX7l4_abSYUI1aO98E7TqNcHLaFH4rd1eNJ8TKthmgmZHo2gwhJT7D6_ZfaNkj/exec';
+
+    const sendToSheets = (etapa) => {
+        try {
+            const now = new Date();
+            const params = new URLSearchParams({
+                data: now.toLocaleDateString('pt-BR'),
+                hora: now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+                nome: document.getElementById('clientName')?.value || '',
+                whatsapp: document.getElementById('clientPhone')?.value || '',
+                email: document.getElementById('clientEmail')?.value || '',
+                tipoImovel: document.getElementById('clientType')?.value || '',
+                metragem: document.getElementById('clientMeters')?.value || '',
+                endereco: document.getElementById('clientAddress')?.value || '',
+                etapa
+            });
+            fetch(`${SHEETS_URL}?${params.toString()}`, { mode: 'no-cors' }).catch(() => {});
+        } catch (_) {}
+    };
+
     nextBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             if (validateStep(currentStep)) {
+                sendToSheets(`etapa-${currentStep + 1}`);
                 currentStep++;
                 updateSteps();
             }
@@ -297,6 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const text = `*ORÇAMENTO PELO SITE*${productLine}%0A%0A*1. Imóvel:* ${type}%0A*2. Metragem:* ${meters} metros%0A*3. Local:* ${address}%0A%0A*Cliente:* ${name}%0A*Contato:* ${phone}%0A%0A_Olá, gostaria de saber o valor estimado._`;
         
+        sendToSheets('completo');
+
         // Abre o WhatsApp imediatamente (ainda dentro do evento de submit),
         // pois iOS/Safari bloqueia window.open chamado dentro de setTimeout
         // por não reconhecer como gesto direto do usuário.
