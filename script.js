@@ -556,6 +556,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Cookie consent banner
+    const cookieBanner = document.getElementById('cookieBanner');
+    if (cookieBanner && !localStorage.getItem('cookieConsent')) {
+        setTimeout(() => cookieBanner.classList.add('cookie-banner--visible'), 800);
+        const dismissBanner = (choice) => {
+            localStorage.setItem('cookieConsent', choice);
+            cookieBanner.classList.remove('cookie-banner--visible');
+        };
+        document.getElementById('cookieAccept').addEventListener('click', () => dismissBanner('accepted'));
+        document.getElementById('cookieDecline').addEventListener('click', () => dismissBanner('declined'));
+    }
+
     // Direct WhatsApp and Modal trigger click tracking
     const whatsappElements = document.querySelectorAll('a[href*="wa.me"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
     whatsappElements.forEach(element => {
