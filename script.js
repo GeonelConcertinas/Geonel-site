@@ -255,19 +255,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sendToSheets = (etapa, data = {}) => {
         try {
-            const now = new Date();
-            const params = new URLSearchParams({
-                data: now.toLocaleDateString('pt-BR'),
-                hora: now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-                nome:       'nome'       in data ? data.nome       : (document.getElementById('clientName')?.value  || ''),
-                whatsapp:   'whatsapp'   in data ? data.whatsapp   : (document.getElementById('clientPhone')?.value || ''),
-                email:      'email'      in data ? data.email      : (document.getElementById('clientEmail')?.value || ''),
-                tipoImovel: 'tipoImovel' in data ? data.tipoImovel : (document.getElementById('clientType')?.value  || ''),
-                metragem:   'metragem'   in data ? data.metragem   : (document.getElementById('clientMeters')?.value || ''),
-                endereco:   'endereco'   in data ? data.endereco   : (document.getElementById('clientAddress')?.value || ''),
-                etapa
-            });
-            fetch(`${SHEETS_URL}?${params.toString()}`, { mode: 'no-cors' }).catch(() => {});
+            const now        = new Date();
+            const dataStr    = now.toLocaleDateString('pt-BR');
+            const hora       = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            const nome       = 'nome'       in data ? data.nome       : (document.getElementById('clientName')?.value   || '');
+            const whatsapp   = 'whatsapp'   in data ? data.whatsapp   : (document.getElementById('clientPhone')?.value  || '');
+            const email      = 'email'      in data ? data.email      : (document.getElementById('clientEmail')?.value  || '');
+            const tipoImovel = 'tipoImovel' in data ? data.tipoImovel : (document.getElementById('clientType')?.value   || '');
+            const metragem   = 'metragem'   in data ? data.metragem   : (document.getElementById('clientMeters')?.value || '');
+            const endereco   = 'endereco'   in data ? data.endereco   : (document.getElementById('clientAddress')?.value || '');
+
+            const query = 'data='        + encodeURIComponent(dataStr)
+                        + '&hora='       + encodeURIComponent(hora)
+                        + '&nome='       + encodeURIComponent(nome)
+                        + '&whatsapp='   + encodeURIComponent(whatsapp)
+                        + '&email='      + encodeURIComponent(email)
+                        + '&tipoImovel=' + encodeURIComponent(tipoImovel)
+                        + '&metragem='   + encodeURIComponent(metragem)
+                        + '&endereco='   + encodeURIComponent(endereco)
+                        + '&etapa='      + encodeURIComponent(etapa);
+
+            fetch(`${SHEETS_URL}?${query}`, { mode: 'no-cors' }).catch(() => {});
         } catch (_) {}
     };
 
