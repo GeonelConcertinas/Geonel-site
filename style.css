@@ -4156,7 +4156,7 @@ ul {
 }
 
 .nav-card:nth-of-type(2) {
-    background: linear-gradient(rgba(15,42,74,0.78), rgba(15,42,74,0.92)), url('images/produtos.webp') center/cover no-repeat;
+    background: linear-gradient(rgba(15,42,74,0.78), rgba(15,42,74,0.92)), url('images/produtos.webp') center 25%/cover no-repeat;
 }
 
 .nav-card:nth-of-type(3) {
