@@ -4037,11 +4037,19 @@ ul {
     display: block;
     height: 60px;
     border-radius: 14px;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.13);
     position: relative;
     overflow: hidden;
     will-change: height;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    transition: box-shadow 0.35s ease;
+}
+
+.card-nav.open {
+    box-shadow: 0 10px 48px rgba(0, 0, 0, 0.20);
 }
 
 .card-nav-top {

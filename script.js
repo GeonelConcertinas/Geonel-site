@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cnIsExpanded) {
             cnIsExpanded = true;
             hamburgerBtn.classList.add('open');
+            cardNav.classList.add('open');
             hamburgerBtn.setAttribute('aria-label', 'Fechar menu');
             cardNavContent.classList.remove('invisible');
             cardNavContent.setAttribute('aria-hidden', 'false');
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             cnIsExpanded = false;
             hamburgerBtn.classList.remove('open');
+            cardNav.classList.remove('open');
             hamburgerBtn.setAttribute('aria-label', 'Abrir menu');
             cnTl.eventCallback('onReverseComplete', () => {
                 cardNavContent.classList.add('invisible');
