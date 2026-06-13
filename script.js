@@ -537,6 +537,8 @@ document.addEventListener('DOMContentLoaded', () => {
             hfEmailErr.textContent = '';
             sendToSheets('completo', hfSnapshot());
             hfGoTo('hfsSuccess');
+            const labelEl = document.getElementById('hfStepLabel');
+            if (labelEl) labelEl.textContent = 'Concluído ✓';
         });
     }
 
