@@ -432,20 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Etapa 4 — submit
         document.getElementById('hfSubmit').addEventListener('click', () => {
-            const snap = hfSnapshot();
-            sendToSheets('completo', snap);
-
-            const emailLine = snap.email
-                ? `%0A*E-mail:* ${encodeURIComponent(snap.email)}`
-                : '';
-            const text = `*ORÇAMENTO PELO SITE*%0A%0A*1. Imóvel:* ${encodeURIComponent(snap.tipoImovel)}%0A*2. Metragem:* ${encodeURIComponent(snap.metragem)}%0A%0A*Cliente:* ${encodeURIComponent(snap.nome)}%0A*Contato:* ${encodeURIComponent(snap.whatsapp)}${emailLine}%0A%0A_Olá, gostaria de saber o valor estimado._`;
-
-            window.open(`https://wa.me/5521974372750?text=${text}`, '_blank');
-
-            if (typeof gtag_report_conversion_whatsapp === 'function') {
-                gtag_report_conversion_whatsapp();
-            }
-
+            sendToSheets('completo', hfSnapshot());
             hfGoTo('hfsSuccess');
         });
     }
