@@ -576,7 +576,7 @@ ul {
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 0 4px 32px rgba(26, 54, 93, 0.12);
-    margin: 0 auto 3rem;
+    margin: 0 0 3rem;
     max-width: 440px;
     width: 100%;
     animation: fadeInUp 1s ease 0.6s both;
@@ -3494,6 +3494,9 @@ ul {
     .hero-content {
         max-width: 100%;
         text-align: center;
+    }
+    .hero-form {
+        margin: 0 auto 3rem;
     }
     .hero-title {
         font-size: 2.4rem;
