@@ -4192,7 +4192,7 @@ ul {
         align-items: center;
         padding: 0.45rem 1rem;
         border-radius: 8px;
-        background-color: var(--primary-color);
+        background-color: var(--accent-color);
         color: #ffffff;
         font-weight: 600;
         font-size: 0.8rem;
@@ -4204,7 +4204,7 @@ ul {
     }
 
     .card-nav-cta:hover {
-        background-color: var(--accent-color);
+        background-color: var(--accent-hover);
         color: #ffffff;
     }
 
