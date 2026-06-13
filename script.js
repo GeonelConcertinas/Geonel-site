@@ -414,6 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const hfSetProgress = (n) => {
             hfBars.forEach((b, i) => b.classList.toggle('hf-bar--active', i < n));
+            const labelEl = document.getElementById('hfStepLabel');
+            if (labelEl) labelEl.textContent = `Etapa ${n} de 4`;
         };
 
         const hfSnapshot = () => ({
@@ -462,30 +464,77 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.value = v;
         });
 
+        // Back buttons
+        document.getElementById('hfBack1b').addEventListener('click', () => {
+            hfSetProgress(1);
+            hfGoTo('hfs1a');
+        });
+        document.getElementById('hfBack2').addEventListener('click', () => {
+            hfSetProgress(1);
+            hfGoTo('hfs1b');
+        });
+        document.getElementById('hfBack3').addEventListener('click', () => {
+            hfSetProgress(2);
+            hfGoTo('hfs2');
+        });
+        document.getElementById('hfBack4').addEventListener('click', () => {
+            hfSetProgress(3);
+            hfGoTo('hfs3');
+        });
+
         // Etapa 2 — nome
+        const hfNameEl  = document.getElementById('hfName');
+        const hfNameErr = document.getElementById('hfNameError');
+        hfNameEl.addEventListener('input', () => {
+            if (hfNameEl.value.trim()) hfNameErr.textContent = '';
+        });
         document.getElementById('hfNextName').addEventListener('click', () => {
-            if (!document.getElementById('hfName').value.trim()) {
-                document.getElementById('hfName').focus();
+            if (!hfNameEl.value.trim()) {
+                hfNameErr.textContent = 'Por favor, informe seu nome';
+                hfNameEl.focus();
                 return;
             }
+            hfNameErr.textContent = '';
             sendToSheets('etapa-2', hfSnapshot());
             hfSetProgress(3);
             hfGoTo('hfs3');
         });
 
         // Etapa 3 — WhatsApp
+        const hfPhoneErr = document.getElementById('hfPhoneError');
+        hfPhoneEl.addEventListener('input', () => {
+            if (hfPhoneEl.value.replace(/\D/g, '').length >= 11) hfPhoneErr.textContent = '';
+        });
         document.getElementById('hfNextPhone').addEventListener('click', () => {
-            if (hfPhoneEl.value.replace(/\D/g, '').length < 10) {
+            const digits = hfPhoneEl.value.replace(/\D/g, '').length;
+            if (digits < 11) {
+                hfPhoneErr.textContent = digits === 0
+                    ? 'Por favor, informe seu WhatsApp'
+                    : 'WhatsApp incompleto — precisa de 11 dígitos';
                 hfPhoneEl.focus();
                 return;
             }
+            hfPhoneErr.textContent = '';
             sendToSheets('etapa-3', hfSnapshot());
             hfSetProgress(4);
             hfGoTo('hfs4');
         });
 
         // Etapa 4 — submit
+        const hfEmailEl  = document.getElementById('hfEmail');
+        const hfEmailErr = document.getElementById('hfEmailError');
+        hfEmailEl.addEventListener('input', () => {
+            const v = hfEmailEl.value.trim();
+            if (!v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) hfEmailErr.textContent = '';
+        });
         document.getElementById('hfSubmit').addEventListener('click', () => {
+            const v = hfEmailEl.value.trim();
+            if (v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+                hfEmailErr.textContent = 'Verifique seu e-mail';
+                hfEmailEl.focus();
+                return;
+            }
+            hfEmailErr.textContent = '';
             sendToSheets('completo', hfSnapshot());
             hfGoTo('hfsSuccess');
         });

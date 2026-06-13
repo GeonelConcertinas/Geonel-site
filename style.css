@@ -746,6 +746,39 @@ ul {
     background: var(--accent-hover);
 }
 
+.hf-step-label {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 500;
+    margin: -0.25rem 0 0.75rem;
+}
+
+.hf-back {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    transition: color 0.2s;
+}
+
+.hf-back:hover {
+    color: var(--primary-color);
+}
+
+.hf-error {
+    font-size: 0.72rem;
+    color: #ef4444;
+    min-height: 1em;
+    margin: 0.2rem 0 0;
+}
+
 /* Success */
 .hf-success {
     text-align: center;

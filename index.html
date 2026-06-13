@@ -120,6 +120,7 @@ function gtag_report_conversion(url) {
                         <div class="hf-bar"></div>
                         <div class="hf-bar"></div>
                     </div>
+                    <p class="hf-step-label" id="hfStepLabel">Etapa 1 de 4</p>
 
                     <!-- Etapa 1A: Tipo de local -->
                     <div class="hf-step hf-step--active" id="hfs1a">
@@ -141,34 +142,41 @@ function gtag_report_conversion(url) {
 
                     <!-- Etapa 1B: Metragem -->
                     <div class="hf-step" id="hfs1b">
+                        <button type="button" class="hf-back" id="hfBack1b">← Voltar</button>
                         <p class="hf-label">Metragem média</p>
                         <div class="hf-meter-options" id="hfMeterOpts"></div>
                     </div>
 
                     <!-- Etapa 2: Nome -->
                     <div class="hf-step" id="hfs2">
+                        <button type="button" class="hf-back" id="hfBack2">← Voltar</button>
                         <p class="hf-label">Qual é o seu nome completo?</p>
                         <div class="hf-field">
                             <input type="text" id="hfName" class="hf-input" placeholder="Seu nome completo" autocomplete="name">
+                            <p class="hf-error" id="hfNameError"></p>
                             <button type="button" class="hf-next" id="hfNextName">Próximo</button>
                         </div>
                     </div>
 
                     <!-- Etapa 3: WhatsApp -->
                     <div class="hf-step" id="hfs3">
-                        <p class="hf-label">Qual é o seu WhatsApp?</p>
+                        <button type="button" class="hf-back" id="hfBack3">← Voltar</button>
+                        <p class="hf-label">Qual WhatsApp podemos enviar o orçamento?</p>
                         <div class="hf-field">
                             <input type="tel" id="hfPhone" class="hf-input" placeholder="(00) 00000-0000" inputmode="numeric" maxlength="15" autocomplete="tel">
+                            <p class="hf-error" id="hfPhoneError"></p>
                             <button type="button" class="hf-next" id="hfNextPhone">Próximo</button>
                         </div>
                     </div>
 
                     <!-- Etapa 4: Email -->
                     <div class="hf-step" id="hfs4">
-                        <p class="hf-label">Qual é o seu e-mail?</p>
+                        <button type="button" class="hf-back" id="hfBack4">← Voltar</button>
+                        <p class="hf-label">Seu e-mail para receber a proposta completa (opcional)</p>
                         <div class="hf-field">
                             <input type="email" id="hfEmail" class="hf-input" placeholder="seu@email.com" autocomplete="email">
-                            <button type="button" class="hf-submit" id="hfSubmit">Enviar Formulário</button>
+                            <p class="hf-error" id="hfEmailError"></p>
+                            <button type="button" class="hf-submit" id="hfSubmit">Receber Meu Orçamento Grátis</button>
                         </div>
                     </div>
 
