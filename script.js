@@ -207,18 +207,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwQ4hKX7l4_abSYUI1aO98E7TqNcHLaFH4rd1eNJ8TKthmgmZHo2gwhJT7D6_ZfaNkj/exec';
 
-    const sendToSheets = (etapa) => {
+    const sendToSheets = (etapa, data = {}) => {
         try {
             const now = new Date();
             const params = new URLSearchParams({
                 data: now.toLocaleDateString('pt-BR'),
                 hora: now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-                nome: document.getElementById('clientName')?.value || '',
-                whatsapp: document.getElementById('clientPhone')?.value || '',
-                email: document.getElementById('clientEmail')?.value || '',
-                tipoImovel: document.getElementById('clientType')?.value || '',
-                metragem: document.getElementById('clientMeters')?.value || '',
-                endereco: document.getElementById('clientAddress')?.value || '',
+                nome:       'nome'       in data ? data.nome       : (document.getElementById('clientName')?.value  || ''),
+                whatsapp:   'whatsapp'   in data ? data.whatsapp   : (document.getElementById('clientPhone')?.value || ''),
+                email:      'email'      in data ? data.email      : (document.getElementById('clientEmail')?.value || ''),
+                tipoImovel: 'tipoImovel' in data ? data.tipoImovel : (document.getElementById('clientType')?.value  || ''),
+                metragem:   'metragem'   in data ? data.metragem   : (document.getElementById('clientMeters')?.value || ''),
+                endereco:   'endereco'   in data ? data.endereco   : (document.getElementById('clientAddress')?.value || ''),
                 etapa
             });
             fetch(`${SHEETS_URL}?${params.toString()}`, { mode: 'no-cors' }).catch(() => {});
@@ -337,6 +337,118 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // --- Hero Inline Form ---
+    const heroForm = document.getElementById('heroForm');
+    if (heroForm) {
+        const METER_MAP = {
+            Residencial: ['10m²', '20m²', '+60m²'],
+            Comercial:   ['10m²', '40m²', '+100m²'],
+            Industrial:  ['50m²', '100m²', '+500m²']
+        };
+
+        let hfType = '';
+        let hfMeters = '';
+
+        const hfAllSteps = heroForm.querySelectorAll('.hf-step');
+        const hfBars     = heroForm.querySelectorAll('.hf-bar');
+
+        const hfGoTo = (id) => {
+            hfAllSteps.forEach(s => s.classList.remove('hf-step--active'));
+            document.getElementById(id).classList.add('hf-step--active');
+        };
+
+        const hfSetProgress = (n) => {
+            hfBars.forEach((b, i) => b.classList.toggle('hf-bar--active', i < n));
+        };
+
+        const hfSnapshot = () => ({
+            tipoImovel: hfType,
+            metragem:   hfMeters,
+            nome:       document.getElementById('hfName').value  || '',
+            whatsapp:   document.getElementById('hfPhone').value || '',
+            email:      document.getElementById('hfEmail').value || '',
+            endereco:   ''
+        });
+
+        // Etapa 1A — tipo de local
+        heroForm.querySelectorAll('.hf-type-opt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                hfType = btn.dataset.value;
+
+                const container = document.getElementById('hfMeterOpts');
+                container.innerHTML = '';
+                METER_MAP[hfType].forEach(val => {
+                    const b = document.createElement('button');
+                    b.type = 'button';
+                    b.className = 'hf-meter-opt';
+                    b.textContent = val;
+                    b.addEventListener('click', () => {
+                        hfMeters = val;
+                        sendToSheets('etapa-1b', hfSnapshot());
+                        hfSetProgress(2);
+                        hfGoTo('hfs2');
+                    });
+                    container.appendChild(b);
+                });
+
+                sendToSheets('etapa-1a', hfSnapshot());
+                hfSetProgress(1);
+                hfGoTo('hfs1b');
+            });
+        });
+
+        // Máscara de telefone
+        const hfPhoneEl = document.getElementById('hfPhone');
+        hfPhoneEl.addEventListener('input', e => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 2)  v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+            if (v.length > 10) v = v.slice(0, 10) + '-' + v.slice(10);
+            e.target.value = v;
+        });
+
+        // Etapa 2 — nome
+        document.getElementById('hfNextName').addEventListener('click', () => {
+            if (!document.getElementById('hfName').value.trim()) {
+                document.getElementById('hfName').focus();
+                return;
+            }
+            sendToSheets('etapa-2', hfSnapshot());
+            hfSetProgress(3);
+            hfGoTo('hfs3');
+        });
+
+        // Etapa 3 — WhatsApp
+        document.getElementById('hfNextPhone').addEventListener('click', () => {
+            if (hfPhoneEl.value.replace(/\D/g, '').length < 10) {
+                hfPhoneEl.focus();
+                return;
+            }
+            sendToSheets('etapa-3', hfSnapshot());
+            hfSetProgress(4);
+            hfGoTo('hfs4');
+        });
+
+        // Etapa 4 — submit
+        document.getElementById('hfSubmit').addEventListener('click', () => {
+            const snap = hfSnapshot();
+            sendToSheets('completo', snap);
+
+            const emailLine = snap.email
+                ? `%0A*E-mail:* ${encodeURIComponent(snap.email)}`
+                : '';
+            const text = `*ORÇAMENTO PELO SITE*%0A%0A*1. Imóvel:* ${encodeURIComponent(snap.tipoImovel)}%0A*2. Metragem:* ${encodeURIComponent(snap.metragem)}%0A%0A*Cliente:* ${encodeURIComponent(snap.nome)}%0A*Contato:* ${encodeURIComponent(snap.whatsapp)}${emailLine}%0A%0A_Olá, gostaria de saber o valor estimado._`;
+
+            window.open(`https://wa.me/5521974372750?text=${text}`, '_blank');
+
+            if (typeof gtag_report_conversion_whatsapp === 'function') {
+                gtag_report_conversion_whatsapp();
+            }
+
+            hfGoTo('hfsSuccess');
+        });
+    }
 
     // --- Google Ads Conversion Tracking ---
     

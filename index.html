@@ -90,9 +90,65 @@ function gtag_report_conversion(url) {
                 </div>
                 <h1 class="hero-title">Sua casa segura.<br>Sua família <br><span class="italic-accent hero-highlight">tranquila.</span></h1>
                 <p class="hero-subtitle">Há mais de 14 anos instalando sistemas de segurança perimetral em residências e empresas no Rio de Janeiro. Proteção real, atendimento rápido e preço justo.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5521964416652" class="btn btn-primary btn-large js-open-modal" target="_blank" rel="noopener noreferrer">Solicitar Orçamento</a>
-                    <a href="#produtos" class="btn btn-secondary btn-large">Ver Produtos</a>
+                <!-- Formulário inline de captação -->
+                <div class="hero-form" id="heroForm">
+                    <div class="hf-progress">
+                        <div class="hf-bar hf-bar--active"></div>
+                        <div class="hf-bar"></div>
+                        <div class="hf-bar"></div>
+                        <div class="hf-bar"></div>
+                    </div>
+
+                    <!-- Etapa 1A: Tipo de local -->
+                    <div class="hf-step hf-step--active" id="hfs1a">
+                        <p class="hf-label">Local</p>
+                        <div class="hf-type-options">
+                            <button type="button" class="hf-type-opt" data-value="Residencial">Residencial</button>
+                            <button type="button" class="hf-type-opt" data-value="Comercial">Comercial</button>
+                            <button type="button" class="hf-type-opt" data-value="Industrial">Industrial</button>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 1B: Metragem -->
+                    <div class="hf-step" id="hfs1b">
+                        <p class="hf-label">Metragem média</p>
+                        <div class="hf-meter-options" id="hfMeterOpts"></div>
+                    </div>
+
+                    <!-- Etapa 2: Nome -->
+                    <div class="hf-step" id="hfs2">
+                        <p class="hf-label">Qual é o seu nome completo?</p>
+                        <div class="hf-field">
+                            <input type="text" id="hfName" class="hf-input" placeholder="Seu nome completo" autocomplete="name">
+                            <button type="button" class="hf-next" id="hfNextName">Próximo</button>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 3: WhatsApp -->
+                    <div class="hf-step" id="hfs3">
+                        <p class="hf-label">Qual é o seu WhatsApp?</p>
+                        <div class="hf-field">
+                            <input type="tel" id="hfPhone" class="hf-input" placeholder="(00) 00000-0000" inputmode="numeric" maxlength="15" autocomplete="tel">
+                            <button type="button" class="hf-next" id="hfNextPhone">Próximo</button>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 4: Email -->
+                    <div class="hf-step" id="hfs4">
+                        <p class="hf-label">Qual é o seu e-mail?</p>
+                        <div class="hf-field">
+                            <input type="email" id="hfEmail" class="hf-input" placeholder="seu@email.com" autocomplete="email">
+                            <button type="button" class="hf-submit" id="hfSubmit">Enviar Formulário</button>
+                        </div>
+                    </div>
+
+                    <!-- Sucesso -->
+                    <div class="hf-step" id="hfsSuccess">
+                        <div class="hf-success">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <p class="hf-success-msg">Perfeito! Abrindo o WhatsApp...</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
