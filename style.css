@@ -582,6 +582,13 @@ ul {
     animation: fadeInUp 1s ease 0.6s both;
 }
 
+.hf-form-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
 .hf-progress {
     display: flex;
     gap: 6px;
@@ -643,6 +650,19 @@ ul {
     text-align: left;
     cursor: pointer;
     transition: border-color 0.18s, background 0.18s, color 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hf-type-opt svg {
+    flex-shrink: 0;
+    opacity: 0.45;
+    transition: opacity 0.18s;
+}
+
+.hf-type-opt:hover svg {
+    opacity: 0.8;
 }
 
 .hf-type-opt:hover {
