@@ -396,9 +396,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroForm = document.getElementById('heroForm');
     if (heroForm) {
         const METER_MAP = {
-            Residencial: ['10m²', '20m²', '+60m²'],
-            Comercial:   ['10m²', '40m²', '+100m²'],
-            Industrial:  ['50m²', '100m²', '+500m²']
+            Residencial: ['10m2', '20m2', '+60m2'],
+            Comercial:   ['10m2', '40m2', '+100m2'],
+            Industrial:  ['50m2', '100m2', '+500m2']
         };
 
         let hfType = '';
