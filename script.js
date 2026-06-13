@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cnIsExpanded = false;
     let cnTl         = null;
 
-    const CN_COLLAPSED = 60;
+    const CN_COLLAPSED = 70;
     const CN_DESKTOP_H = 260;
     const cnIsMobile   = () => window.matchMedia('(max-width: 768px)').matches;
 

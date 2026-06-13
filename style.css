@@ -4035,8 +4035,8 @@ ul {
 
 .card-nav {
     display: block;
-    height: 60px;
-    border-radius: 14px;
+    height: 70px;
+    border-radius: 16px;
     position: relative;
     overflow: hidden;
     will-change: height;
@@ -4062,7 +4062,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    height: 60px;
+    height: 70px;
 }
 
 /* Hamburger */
@@ -4113,7 +4113,7 @@ ul {
 }
 
 .card-nav-logo img {
-    height: 44px;
+    height: 54px;
     width: auto;
 }
 
