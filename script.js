@@ -1,45 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Header Scroll Effect ---
-    const header = document.getElementById('header');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    // --- Card Nav (GSAP) ---
+    const cardNav        = document.getElementById('cardNav');
+    const hamburgerBtn   = document.getElementById('hamburgerBtn');
+    const cardNavContent = document.getElementById('cardNavContent');
+    const navCards       = cardNav ? Array.from(cardNav.querySelectorAll('.nav-card')) : [];
 
-    // --- Mobile Menu Toggle ---
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav');
-    
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        
-        const spans = menuToggle.querySelectorAll('span');
-        if (nav.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-        } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    });
+    let cnIsExpanded = false;
+    let cnTl         = null;
 
-    // Close mobile menu on link click
-    const navLinks = document.querySelectorAll('.nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+    const CN_COLLAPSED = 60;
+    const CN_DESKTOP_H = 260;
+    const cnIsMobile   = () => window.matchMedia('(max-width: 768px)').matches;
+
+    const cnCalcHeight = () => {
+        if (!cnIsMobile()) return CN_DESKTOP_H;
+        if (!cardNavContent) return CN_DESKTOP_H;
+        const wasVis = cardNavContent.style.visibility;
+        const wasPos = cardNavContent.style.position;
+        const wasH   = cardNavContent.style.height;
+        cardNavContent.style.visibility = 'visible';
+        cardNavContent.style.position   = 'static';
+        cardNavContent.style.height     = 'auto';
+        const h = CN_COLLAPSED + cardNavContent.scrollHeight + 16;
+        cardNavContent.style.visibility = wasVis;
+        cardNavContent.style.position   = wasPos;
+        cardNavContent.style.height     = wasH;
+        return h;
+    };
+
+    const cnCreateTl = () => {
+        if (!cardNav) return null;
+        gsap.set(cardNav,  { height: CN_COLLAPSED, overflow: 'hidden' });
+        gsap.set(navCards, { y: 50, opacity: 0 });
+        const tl = gsap.timeline({ paused: true });
+        tl.to(cardNav,  { height: cnCalcHeight(), duration: 0.4, ease: 'power3.out' });
+        tl.to(navCards, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', stagger: 0.08 }, '-=0.1');
+        return tl;
+    };
+
+    const cnToggle = () => {
+        if (!cnTl) return;
+        if (!cnIsExpanded) {
+            cnIsExpanded = true;
+            hamburgerBtn.classList.add('open');
+            hamburgerBtn.setAttribute('aria-label', 'Fechar menu');
+            cardNavContent.classList.remove('invisible');
+            cardNavContent.setAttribute('aria-hidden', 'false');
+            cnTl.play(0);
+        } else {
+            cnIsExpanded = false;
+            hamburgerBtn.classList.remove('open');
+            hamburgerBtn.setAttribute('aria-label', 'Abrir menu');
+            cnTl.eventCallback('onReverseComplete', () => {
+                cardNavContent.classList.add('invisible');
+                cardNavContent.setAttribute('aria-hidden', 'true');
+                cnTl.eventCallback('onReverseComplete', null);
+            });
+            cnTl.reverse();
+        }
+    };
+
+    if (cardNav) {
+        cnTl = cnCreateTl();
+
+        hamburgerBtn.addEventListener('click', cnToggle);
+        hamburgerBtn.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cnToggle(); }
         });
-    });
+
+        cardNav.querySelectorAll('.nav-card-link, .card-nav-cta').forEach(el => {
+            el.addEventListener('click', () => { if (cnIsExpanded) cnToggle(); });
+        });
+
+        document.addEventListener('click', e => {
+            const container = document.getElementById('cardNavContainer');
+            if (cnIsExpanded && container && !container.contains(e.target)) cnToggle();
+        });
+
+        window.addEventListener('resize', () => {
+            if (!cnTl) return;
+            cnTl.kill();
+            cnTl = cnCreateTl();
+            if (cnIsExpanded) cnTl.progress(1);
+        });
+    }
 
     // --- Scroll Reveal Animation ---
     const revealElements = document.querySelectorAll('.reveal');

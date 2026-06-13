@@ -4013,3 +4013,218 @@ ul {
         padding: 1rem !important;
     }
 }
+
+/* ============================================================
+   CARD NAV
+   ============================================================ */
+
+.invisible {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.card-nav-container {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 100;
+    top: 1.4rem;
+}
+
+.card-nav {
+    display: block;
+    height: 60px;
+    border-radius: 14px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.13);
+    position: relative;
+    overflow: hidden;
+    will-change: height;
+    background-color: #ffffff;
+}
+
+.card-nav-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    height: 60px;
+}
+
+/* Hamburger */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 6px;
+    order: 2;
+    padding: 0.5rem;
+    color: var(--primary-color);
+    border-radius: 8px;
+    transition: background 0.18s;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+}
+
+.hamburger-menu:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-line {
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+    transform-origin: 50% 50%;
+    display: block;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Logo */
+.card-nav-logo {
+    display: flex;
+    align-items: center;
+    order: 1;
+}
+
+.card-nav-logo img {
+    height: 30px;
+    width: auto;
+}
+
+/* CTA button — hidden on mobile */
+.card-nav-cta {
+    display: none;
+}
+
+/* Content / cards area */
+.card-nav-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+/* Individual nav card */
+.nav-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 0.4rem;
+    padding: 12px 16px;
+    border-radius: 10px;
+    min-height: 60px;
+    user-select: none;
+}
+
+.nav-card-label {
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.nav-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: auto;
+}
+
+.nav-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+.nav-card-link:hover {
+    opacity: 1;
+}
+
+/* Desktop overrides (≥769px) */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        order: 0;
+    }
+
+    .card-nav-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        order: 0;
+    }
+
+    .card-nav-cta {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.45rem 1rem;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.8rem;
+        font-family: var(--font-sans);
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+        height: 38px;
+    }
+
+    .card-nav-cta:hover {
+        background-color: var(--accent-color);
+        color: #ffffff;
+    }
+
+    .card-nav-content {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .nav-card {
+        flex: 1 1 0%;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .nav-card-label {
+        font-size: 22px;
+    }
+
+    .nav-card-link {
+        font-size: 15px;
+    }
+}

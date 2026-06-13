@@ -59,24 +59,45 @@ function gtag_report_conversion(url) {
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/img/logo-sem-fundo.webp" alt="Geonel Segurança Perimetral">
-            </a>
-            <nav class="nav">
-                <a href="index.html#hero">Início</a>
-                <a href="index.html#diferenciais">Por que a Geonel?</a>
-                <a href="index.html#produtos">Concertinas & Telas</a>
-                <a href="outros-servicos.html" style="color: var(--accent-color);">Outros Serviços</a>
-            </nav>
-            <a href="https://wa.me/5521964416652" class="btn btn-primary header-btn js-open-modal" target="_blank" rel="noopener noreferrer">Solicitar Orçamento</a>
-            <button class="menu-toggle" aria-label="Abrir Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
+    <!-- Card Nav -->
+    <div class="card-nav-container" id="cardNavContainer">
+        <nav class="card-nav" id="cardNav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" id="hamburgerBtn" role="button" aria-label="Abrir menu" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+                <div class="card-nav-logo">
+                    <a href="index.html"><img src="assets/img/logo-sem-fundo.webp" alt="Geonel Segurança Perimetral"></a>
+                </div>
+                <a href="index.html#hero" class="card-nav-cta">Solicitar Orçamento</a>
+            </div>
+            <div class="card-nav-content invisible" id="cardNavContent" aria-hidden="true">
+                <div class="nav-card" style="background-color:#1a365d;color:#fff;">
+                    <div class="nav-card-label">A Empresa</div>
+                    <div class="nav-card-links">
+                        <a href="index.html#sobre" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Quem Somos</a>
+                        <a href="index.html#diferenciais" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Por que a Geonel?</a>
+                        <a href="index.html#depoimentos" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Depoimentos</a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color:#0f2a4a;color:#fff;">
+                    <div class="nav-card-label">Produtos</div>
+                    <div class="nav-card-links">
+                        <a href="index.html#produtos" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Concertinas &amp; Telas</a>
+                        <a href="outros-servicos.html" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Outros Serviços</a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color:#0c1e35;color:#fff;">
+                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-links">
+                        <a href="https://wa.me/5521964416652" class="nav-card-link" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> WhatsApp</a>
+                        <a href="mailto:geonelconcertinasltda@gmail.com" class="nav-card-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> E-mail</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <!-- Main Content Container -->
     <main class="outros-servicos-main">
@@ -548,6 +569,7 @@ function gtag_report_conversion(url) {
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
