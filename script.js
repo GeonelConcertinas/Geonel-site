@@ -441,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     b.textContent = val;
                     b.addEventListener('click', () => {
                         hfMeters = val;
+                        gtag('event', 'form_step_metragem', { 'form_name': 'hero_orcamento', 'etapa': '1b_metragem', 'metragem': val });
                         sendToSheets('etapa-1b', hfSnapshot());
                         hfSetProgress(2);
                         hfGoTo('hfs2');
@@ -448,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     container.appendChild(b);
                 });
 
+                gtag('event', 'form_start', { 'form_name': 'hero_orcamento', 'etapa': '1_tipo', 'tipo_imovel': hfType });
                 sendToSheets('etapa-1a', hfSnapshot());
                 hfSetProgress(1);
                 hfGoTo('hfs1b');
@@ -495,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             hfNameErr.textContent = '';
+            gtag('event', 'form_step_nome', { 'form_name': 'hero_orcamento', 'etapa': '2_nome' });
             sendToSheets('etapa-2', hfSnapshot());
             hfSetProgress(3);
             hfGoTo('hfs3');
@@ -515,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             hfPhoneErr.textContent = '';
+            gtag('event', 'form_step_whatsapp', { 'form_name': 'hero_orcamento', 'etapa': '3_whatsapp' });
             sendToSheets('etapa-3', hfSnapshot());
             hfSetProgress(4);
             hfGoTo('hfs4');
@@ -535,6 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             hfEmailErr.textContent = '';
+            gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '4_conclusao' });
             sendToSheets('completo', hfSnapshot());
             gtag('event', 'conversion', { 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC' });
             hfGoTo('hfsSuccess');
