@@ -4244,10 +4244,21 @@ ul {
 .card-nav-logo {
     display: flex;
     align-items: center;
+    width: fit-content;
+    height: fit-content;
     order: 1;
 }
 
+.card-nav-logo a {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    line-height: 0;
+}
+
 .card-nav-logo img {
+    display: block;
     height: 54px;
     width: auto;
 }
