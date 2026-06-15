@@ -536,6 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             hfEmailErr.textContent = '';
             sendToSheets('completo', hfSnapshot());
+            gtag('event', 'conversion', { 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC' });
             hfGoTo('hfsSuccess');
             const labelEl = document.getElementById('hfStepLabel');
             if (labelEl) labelEl.textContent = 'Concluído ✓';
@@ -571,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Direct WhatsApp and Modal trigger click tracking
-    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
+    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
     whatsappElements.forEach(element => {
         element.addEventListener('click', () => {
             // Se o elemento é para abrir o modal, não redirecionamos direto para o WhatsApp no clique
@@ -582,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof gtag_report_conversion_whatsapp === 'function') {
                 const url = element.getAttribute('href');
-                if (url && url.includes('wa.me')) {
+                if (url && (url.includes('wa.me') || url.includes('api.whatsapp.com'))) {
                     gtag_report_conversion_whatsapp(url);
                 } else {
                     gtag('event', 'conversion', {
