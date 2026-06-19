@@ -396,9 +396,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroForm = document.getElementById('heroForm');
     if (heroForm) {
         const METER_MAP = {
-            Residencial: ['10m', '20m', 'Acima de 60m'],
-            Comercial:   ['10m', '40m', 'Acima de 100m'],
-            Industrial:  ['50m', '100m', 'Acima de 500m']
+            Residencial: ['Até 20m', '20 a 50m', 'Acima de 50m', 'Não sei ainda'],
+            Comercial:   ['Até 40m', '40 a 100m', 'Acima de 100m', 'Não sei ainda'],
+            Industrial:  ['Até 100m', '100 a 500m', 'Acima de 500m', 'Não sei ainda'],
         };
 
         let hfType = '';
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hfSetProgress = (n) => {
             hfBars.forEach((b, i) => b.classList.toggle('hf-bar--active', i < n));
             const labelEl = document.getElementById('hfStepLabel');
-            if (labelEl) labelEl.textContent = `Etapa ${n} de 4`;
+            if (labelEl) labelEl.textContent = `Etapa ${n} de 5`;
         };
 
         const hfSnapshot = () => ({
@@ -427,7 +427,61 @@ document.addEventListener('DOMContentLoaded', () => {
             endereco:   ''
         });
 
-        // Etapa 1A — tipo de local
+        // Etapa 1 — Nome
+        const hfNameEl  = document.getElementById('hfName');
+        const hfNameErr = document.getElementById('hfNameError');
+        hfNameEl.addEventListener('input', () => {
+            if (hfNameEl.value.trim()) hfNameErr.textContent = '';
+        });
+        document.getElementById('hfNextNome').addEventListener('click', () => {
+            if (!hfNameEl.value.trim()) {
+                hfNameErr.textContent = 'Por favor, informe seu nome';
+                hfNameEl.focus();
+                return;
+            }
+            hfNameErr.textContent = '';
+            gtag('event', 'form_start', { 'form_name': 'hero_orcamento', 'etapa': '1_nome' });
+            sendToSheets('etapa-1', hfSnapshot());
+            hfSetProgress(2);
+            hfGoTo('hfsWapp');
+        });
+
+        // Etapa 2 — WhatsApp
+        const hfPhoneEl  = document.getElementById('hfPhone');
+        const hfPhoneErr = document.getElementById('hfPhoneError');
+        hfPhoneEl.addEventListener('input', e => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 2)  v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+            if (v.length > 10) v = v.slice(0, 10) + '-' + v.slice(10);
+            e.target.value = v;
+            if (v.replace(/\D/g, '').length >= 11) hfPhoneErr.textContent = '';
+        });
+        document.getElementById('hfBackWapp').addEventListener('click', () => {
+            hfSetProgress(1);
+            hfGoTo('hfsNome');
+        });
+        document.getElementById('hfNextWapp').addEventListener('click', () => {
+            const digits = hfPhoneEl.value.replace(/\D/g, '').length;
+            if (digits < 11) {
+                hfPhoneErr.textContent = digits === 0
+                    ? 'Por favor, informe seu WhatsApp'
+                    : 'WhatsApp incompleto — precisa de 11 dígitos';
+                hfPhoneEl.focus();
+                return;
+            }
+            hfPhoneErr.textContent = '';
+            gtag('event', 'form_step_whatsapp', { 'form_name': 'hero_orcamento', 'etapa': '2_whatsapp' });
+            sendToSheets('etapa-2', hfSnapshot());
+            hfSetProgress(3);
+            hfGoTo('hfsTipo');
+        });
+
+        // Etapa 3 — Tipo de instalação
+        document.getElementById('hfBackTipo').addEventListener('click', () => {
+            hfSetProgress(2);
+            hfGoTo('hfsWapp');
+        });
         heroForm.querySelectorAll('.hf-type-opt').forEach(btn => {
             btn.addEventListener('click', () => {
                 hfType = btn.dataset.value;
@@ -441,95 +495,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     b.textContent = val;
                     b.addEventListener('click', () => {
                         hfMeters = val;
-                        gtag('event', 'form_step_metragem', { 'form_name': 'hero_orcamento', 'etapa': '1b_metragem', 'metragem': val });
-                        sendToSheets('etapa-1b', hfSnapshot());
-                        hfSetProgress(2);
-                        hfGoTo('hfs2');
+                        gtag('event', 'form_step_metragem', { 'form_name': 'hero_orcamento', 'etapa': '4_metragem', 'metragem': val });
+                        sendToSheets('etapa-4', hfSnapshot());
+                        hfSetProgress(5);
+                        hfGoTo('hfsEmail');
                     });
                     container.appendChild(b);
                 });
 
-                gtag('event', 'form_start', { 'form_name': 'hero_orcamento', 'etapa': '1_tipo', 'tipo_imovel': hfType });
-                sendToSheets('etapa-1a', hfSnapshot());
-                hfSetProgress(1);
-                hfGoTo('hfs1b');
+                gtag('event', 'form_step_tipo', { 'form_name': 'hero_orcamento', 'etapa': '3_tipo', 'tipo_imovel': hfType });
+                sendToSheets('etapa-3', hfSnapshot());
+                hfSetProgress(4);
+                hfGoTo('hfsMeter');
             });
         });
 
-        // Máscara de telefone
-        const hfPhoneEl = document.getElementById('hfPhone');
-        hfPhoneEl.addEventListener('input', e => {
-            let v = e.target.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 2)  v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-            if (v.length > 10) v = v.slice(0, 10) + '-' + v.slice(10);
-            e.target.value = v;
-        });
-
-        // Back buttons
-        document.getElementById('hfBack1b').addEventListener('click', () => {
-            hfSetProgress(1);
-            hfGoTo('hfs1a');
-        });
-        document.getElementById('hfBack2').addEventListener('click', () => {
-            hfSetProgress(1);
-            hfGoTo('hfs1b');
-        });
-        document.getElementById('hfBack3').addEventListener('click', () => {
-            hfSetProgress(2);
-            hfGoTo('hfs2');
-        });
-        document.getElementById('hfBack4').addEventListener('click', () => {
+        // Etapa 4 — Metragem (back only; seleção é feita pelos botões gerados acima)
+        document.getElementById('hfBackMeter').addEventListener('click', () => {
             hfSetProgress(3);
-            hfGoTo('hfs3');
+            hfGoTo('hfsTipo');
         });
 
-        // Etapa 2 — nome
-        const hfNameEl  = document.getElementById('hfName');
-        const hfNameErr = document.getElementById('hfNameError');
-        hfNameEl.addEventListener('input', () => {
-            if (hfNameEl.value.trim()) hfNameErr.textContent = '';
-        });
-        document.getElementById('hfNextName').addEventListener('click', () => {
-            if (!hfNameEl.value.trim()) {
-                hfNameErr.textContent = 'Por favor, informe seu nome';
-                hfNameEl.focus();
-                return;
-            }
-            hfNameErr.textContent = '';
-            gtag('event', 'form_step_nome', { 'form_name': 'hero_orcamento', 'etapa': '2_nome' });
-            sendToSheets('etapa-2', hfSnapshot());
-            hfSetProgress(3);
-            hfGoTo('hfs3');
-        });
-
-        // Etapa 3 — WhatsApp
-        const hfPhoneErr = document.getElementById('hfPhoneError');
-        hfPhoneEl.addEventListener('input', () => {
-            if (hfPhoneEl.value.replace(/\D/g, '').length >= 11) hfPhoneErr.textContent = '';
-        });
-        document.getElementById('hfNextPhone').addEventListener('click', () => {
-            const digits = hfPhoneEl.value.replace(/\D/g, '').length;
-            if (digits < 11) {
-                hfPhoneErr.textContent = digits === 0
-                    ? 'Por favor, informe seu WhatsApp'
-                    : 'WhatsApp incompleto — precisa de 11 dígitos';
-                hfPhoneEl.focus();
-                return;
-            }
-            hfPhoneErr.textContent = '';
-            gtag('event', 'form_step_whatsapp', { 'form_name': 'hero_orcamento', 'etapa': '3_whatsapp' });
-            sendToSheets('etapa-3', hfSnapshot());
-            hfSetProgress(4);
-            hfGoTo('hfs4');
-        });
-
-        // Etapa 4 — submit
+        // Etapa 5 — Email / submit
         const hfEmailEl  = document.getElementById('hfEmail');
         const hfEmailErr = document.getElementById('hfEmailError');
         hfEmailEl.addEventListener('input', () => {
             const v = hfEmailEl.value.trim();
             if (!v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) hfEmailErr.textContent = '';
+        });
+        document.getElementById('hfBackEmail').addEventListener('click', () => {
+            hfSetProgress(4);
+            hfGoTo('hfsMeter');
         });
         document.getElementById('hfSubmit').addEventListener('click', () => {
             const v = hfEmailEl.value.trim();
@@ -539,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             hfEmailErr.textContent = '';
-            gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '4_conclusao' });
+            gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '5_conclusao' });
             sendToSheets('completo', hfSnapshot());
             gtag('event', 'conversion', { 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC' });
             hfGoTo('hfsSuccess');
