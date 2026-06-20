@@ -423,11 +423,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const hfSnapshot = () => ({
             tipoImovel: hfType,
-            metragem:   '',
             nome:       document.getElementById('hfName').value  || '',
             whatsapp:   document.getElementById('hfPhone').value || '',
             email:      document.getElementById('hfEmail').value || '',
-            endereco:   ''
         });
 
         // Etapa 1 — Nome
