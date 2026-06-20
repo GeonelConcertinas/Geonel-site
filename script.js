@@ -571,4 +571,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- WhatsApp Floating Tooltip & Hero Suggestion Interactions ---
+    const wappTooltip = document.getElementById('wappTooltip');
+    const closeWappTooltip = document.getElementById('closeWappTooltip');
+    const floatingWappBtn = document.querySelector('.floating-whatsapp');
+    const wappOnlineBadge = document.getElementById('wappOnlineBadge');
+
+    if (wappTooltip && closeWappTooltip && floatingWappBtn) {
+        let tooltipShown = false;
+
+        const showWappTooltip = () => {
+            if (tooltipShown || wappTooltip.classList.contains('active')) return;
+            tooltipShown = true;
+            wappTooltip.classList.add('active');
+            floatingWappBtn.classList.add('wapp-attention-bounce');
+            setTimeout(() => floatingWappBtn.classList.remove('wapp-attention-bounce'), 1600);
+        };
+
+        if (!localStorage.getItem('wappTooltipDismissed')) {
+            // Timer trigger — whichever fires first wins
+            setTimeout(showWappTooltip, 4000);
+
+            // Scroll trigger — fires when hero section leaves the viewport
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                const heroObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            showWappTooltip();
+                            heroObserver.disconnect();
+                        }
+                    });
+                }, { threshold: 0 });
+                heroObserver.observe(heroSection);
+            }
+        } else if (wappOnlineBadge) {
+            // Previously dismissed — show persistent online badge immediately
+            wappOnlineBadge.classList.add('visible');
+        }
+
+        // Close button: persist dismissal and activate badge
+        closeWappTooltip.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            wappTooltip.classList.remove('active');
+            localStorage.setItem('wappTooltipDismissed', 'true');
+            if (wappOnlineBadge) wappOnlineBadge.classList.add('visible');
+        });
+    }
+
+    // Hero Form WhatsApp Suggestion Animation
+    const heroWappSuggest = document.querySelector('.hf-wapp-suggest');
+    const hfNameInput = document.getElementById('hfName');
+    
+    if (heroWappSuggest) {
+        const showHeroSuggest = () => {
+            if (!heroWappSuggest.classList.contains('active')) {
+                heroWappSuggest.classList.add('active');
+            }
+        };
+
+        // Automatically show the WhatsApp suggestion card in the Hero form after 2 seconds
+        setTimeout(showHeroSuggest, 2000);
+
+        // Or immediately when the user focuses on the name input field
+        if (hfNameInput) {
+            hfNameInput.addEventListener('focus', showHeroSuggest);
+        }
+    }
 });
