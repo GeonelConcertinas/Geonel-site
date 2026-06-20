@@ -442,7 +442,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             hfNameErr.textContent = '';
             gtag('event', 'form_start', { 'form_name': 'hero_orcamento', 'etapa': '1_nome' });
-            sendToSheets('etapa-1', hfSnapshot());
             hfSetProgress(2);
             hfGoTo('hfsWapp');
         });
@@ -473,7 +472,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             hfPhoneErr.textContent = '';
             gtag('event', 'form_step_whatsapp', { 'form_name': 'hero_orcamento', 'etapa': '2_whatsapp' });
-            sendToSheets('etapa-2', hfSnapshot());
             hfSetProgress(3);
             hfGoTo('hfsTipo');
         });
@@ -487,7 +485,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 hfType = btn.dataset.value;
                 gtag('event', 'form_step_tipo', { 'form_name': 'hero_orcamento', 'etapa': '3_tipo', 'tipo_imovel': hfType });
-                sendToSheets('etapa-3', hfSnapshot());
                 hfSetProgress(4);
                 hfGoTo('hfsEmail');
             });
