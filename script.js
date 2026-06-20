@@ -397,12 +397,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroForm) {
         let hfType = '';
 
+        const STEP_TITLES = {
+            hfsNome:    'Solicite seu Orçamento',
+            hfsWapp:    'WhatsApp para Contato',
+            hfsTipo:    'Selecione o Tipo de Instalação',
+            hfsEmail:   'E-mail para Contato',
+            hfsSuccess: '',
+        };
+
         const hfAllSteps = heroForm.querySelectorAll('.hf-step');
         const hfBars     = heroForm.querySelectorAll('.hf-bar');
+        const hfTitleEl  = document.getElementById('hfFormTitle');
 
         const hfGoTo = (id) => {
             hfAllSteps.forEach(s => s.classList.remove('hf-step--active'));
             document.getElementById(id).classList.add('hf-step--active');
+            if (hfTitleEl && STEP_TITLES[id] !== undefined) {
+                hfTitleEl.textContent = STEP_TITLES[id];
+            }
         };
 
         const hfSetProgress = (n) => {
