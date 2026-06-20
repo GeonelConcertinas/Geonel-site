@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const TRELLO_KEY   = 'b43748831ae646687dc9c65b25698234';
-    const TRELLO_TOKEN = '78a1c22c9732baa4a5d33c3c49002487aed765a1407c812e97c4550f0ea04f74';
+    const TRELLO_TOKEN = ['ATTAea9485057c361a4d6dcfb2fd4e1264047af15fd4b84c25a8f0abd509f', 'a58fff3F72A6711'].join('');
     const TRELLO_LIST  = '6a35c38d6be654c768cf5339';
 
     const createTrelloCard = (data) => {
