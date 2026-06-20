@@ -251,38 +251,28 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     };
 
-    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwQ4hKX7l4_abSYUI1aO98E7TqNcHLaFH4rd1eNJ8TKthmgmZHo2gwhJT7D6_ZfaNkj/exec';
+    const TRELLO_KEY   = 'b43748831ae646687dc9c65b25698234';
+    const TRELLO_TOKEN = '78a1c22c9732baa4a5d33c3c49002487aed765a1407c812e97c4550f0ea04f74';
+    const TRELLO_LIST  = '6a35c38d6be654c768cf5339';
 
-    const sendToSheets = (etapa, data = {}) => {
-        try {
-            const now        = new Date();
-            const dataStr    = now.toLocaleDateString('pt-BR');
-            const hora       = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            const nome       = 'nome'       in data ? data.nome       : (document.getElementById('clientName')?.value   || '');
-            const whatsapp   = 'whatsapp'   in data ? data.whatsapp   : (document.getElementById('clientPhone')?.value  || '');
-            const email      = 'email'      in data ? data.email      : (document.getElementById('clientEmail')?.value  || '');
-            const tipoImovel = 'tipoImovel' in data ? data.tipoImovel : (document.getElementById('clientType')?.value   || '');
-            const metragem   = 'metragem'   in data ? data.metragem   : (document.getElementById('clientMeters')?.value || '');
-            const endereco   = 'endereco'   in data ? data.endereco   : (document.getElementById('clientAddress')?.value || '');
+    const createTrelloCard = (data) => {
+        const desc = [
+            `Nome: ${data.nome}`,
+            `WhatsApp: ${data.whatsapp}`,
+            `Tipo de Instalação: ${data.tipoImovel || '—'}`,
+            `E-mail: ${data.email || '—'}`,
+        ].join('\n');
 
-            const query = 'data='        + encodeURIComponent(dataStr)
-                        + '&hora='       + encodeURIComponent(hora)
-                        + '&nome='       + encodeURIComponent(nome)
-                        + '&whatsapp='   + encodeURIComponent(whatsapp)
-                        + '&email='      + encodeURIComponent(email)
-                        + '&tipoImovel=' + encodeURIComponent(tipoImovel)
-                        + '&metragem='   + encodeURIComponent(metragem)
-                        + '&endereco='   + encodeURIComponent(endereco)
-                        + '&etapa='      + encodeURIComponent(etapa);
-
-            fetch(`${SHEETS_URL}?${query}`, { mode: 'no-cors' }).catch(() => {});
-        } catch (_) {}
+        fetch(`https://api.trello.com/1/cards?key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idList: TRELLO_LIST, name: data.nome, desc }),
+        }).catch(() => {});
     };
 
     nextBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             if (validateStep(currentStep)) {
-                sendToSheets(`etapa-${currentStep + 1}`);
                 currentStep++;
                 updateSteps();
             }
@@ -372,8 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const text = `*ORÇAMENTO PELO SITE*${productLine}%0A%0A*1. Imóvel:* ${type}%0A*2. Metragem:* ${meters} metros%0A*3. Local:* ${address}%0A%0A*Cliente:* ${name}%0A*Contato:* ${phone}%0A%0A_Olá, gostaria de saber o valor estimado._`;
         
-        sendToSheets('completo');
-
         // Abre o WhatsApp imediatamente (ainda dentro do evento de submit),
         // pois iOS/Safari bloqueia window.open chamado dentro de setTimeout
         // por não reconhecer como gesto direto do usuário.
@@ -510,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             hfEmailErr.textContent = '';
             gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '4_conclusao' });
-            sendToSheets('completo', hfSnapshot());
+            createTrelloCard(hfSnapshot());
             gtag('event', 'conversion', { 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC' });
             hfGoTo('hfsSuccess');
         });
