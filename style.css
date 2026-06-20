@@ -747,30 +747,34 @@ ul {
     background: var(--accent-hover);
 }
 
-.hf-step-label {
-    font-size: 0.72rem;
-    color: #64748b;
-    font-weight: 500;
-    margin: -0.25rem 0 0.75rem;
+.hf-btn-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.hf-btn-row .hf-next,
+.hf-btn-row .hf-submit {
+    width: auto;
+    flex: 1;
 }
 
 .hf-back {
-    background: none;
-    border: none;
-    color: #64748b;
-    font-size: 0.78rem;
-    font-weight: 500;
+    flex: 1;
+    padding: 0.875rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    background: transparent;
+    color: #475569;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    padding: 0;
-    margin-bottom: 0.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.2rem;
-    transition: color 0.2s;
+    transition: border-color 0.18s, background 0.18s;
 }
 
 .hf-back:hover {
-    color: var(--primary-color);
+    border-color: #94a3b8;
+    background: #f1f5f9;
 }
 
 .hf-error {

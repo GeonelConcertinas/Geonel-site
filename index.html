@@ -114,21 +114,18 @@ function gtag_report_conversion(url) {
                 <p class="hero-subtitle">Há mais de 14 anos instalando sistemas de segurança perimetral em residências e empresas no Rio de Janeiro. Proteção real, atendimento rápido e preço justo.</p>
                 <!-- Formulário inline de captação -->
                 <div class="hero-form" id="heroForm">
-                    <p class="hf-form-title">Solicite seu Orçamento</p>
                     <div class="hf-progress">
                         <div class="hf-bar hf-bar--active"></div>
                         <div class="hf-bar"></div>
                         <div class="hf-bar"></div>
                         <div class="hf-bar"></div>
-                        <div class="hf-bar"></div>
                     </div>
-                    <p class="hf-step-label" id="hfStepLabel">Etapa 1 de 5</p>
 
                     <!-- Etapa 1: Nome -->
                     <div class="hf-step hf-step--active" id="hfsNome">
-                        <p class="hf-label">Qual é o seu nome completo?</p>
+                        <p class="hf-form-title">Solicite seu Orçamento</p>
                         <div class="hf-field">
-                            <input type="text" id="hfName" class="hf-input" placeholder="Seu nome completo" autocomplete="name">
+                            <input type="text" id="hfName" class="hf-input" placeholder="Nome" autocomplete="name">
                             <p class="hf-error" id="hfNameError"></p>
                             <button type="button" class="hf-next" id="hfNextNome">Próximo</button>
                         </div>
@@ -136,19 +133,20 @@ function gtag_report_conversion(url) {
 
                     <!-- Etapa 2: WhatsApp -->
                     <div class="hf-step" id="hfsWapp">
-                        <button type="button" class="hf-back" id="hfBackWapp">← Voltar</button>
-                        <p class="hf-label">Qual WhatsApp podemos enviar o orçamento?</p>
+                        <p class="hf-form-title">WhatsApp para Contato</p>
                         <div class="hf-field">
                             <input type="tel" id="hfPhone" class="hf-input" placeholder="(00) 00000-0000" inputmode="numeric" maxlength="15" autocomplete="tel">
                             <p class="hf-error" id="hfPhoneError"></p>
-                            <button type="button" class="hf-next" id="hfNextWapp">Próximo</button>
+                            <div class="hf-btn-row">
+                                <button type="button" class="hf-back" id="hfBackWapp">Voltar</button>
+                                <button type="button" class="hf-next" id="hfNextWapp">Próximo</button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Etapa 3: Tipo de instalação -->
                     <div class="hf-step" id="hfsTipo">
-                        <button type="button" class="hf-back" id="hfBackTipo">← Voltar</button>
-                        <p class="hf-label">Tipo de instalação</p>
+                        <p class="hf-form-title">Selecione o Tipo de Instalação</p>
                         <div class="hf-type-options">
                             <button type="button" class="hf-type-opt" data-value="Residencial">
                                 Residencial
@@ -163,25 +161,22 @@ function gtag_report_conversion(url) {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16h.01"/><path d="M16 16h.01"/><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M8 16h.01"/></svg>
                             </button>
                         </div>
+                        <div class="hf-btn-row" style="margin-top:0.75rem;">
+                            <button type="button" class="hf-back" id="hfBackTipo">Voltar</button>
+                        </div>
                     </div>
 
-                    <!-- Etapa 4: Metragem (gerada dinamicamente) -->
-                    <div class="hf-step" id="hfsMeter">
-                        <button type="button" class="hf-back" id="hfBackMeter">← Voltar</button>
-                        <p class="hf-label">Metragem média</p>
-                        <div class="hf-meter-options" id="hfMeterOpts"></div>
-                    </div>
-
-                    <!-- Etapa 5: Email -->
+                    <!-- Etapa 4: Email -->
                     <div class="hf-step" id="hfsEmail">
-                        <button type="button" class="hf-back" id="hfBackEmail">← Voltar</button>
-                        <p class="hf-label">Seu e-mail para receber a proposta completa (opcional)</p>
+                        <p class="hf-form-title">E-mail para Contato</p>
                         <div class="hf-field">
                             <input type="email" id="hfEmail" class="hf-input" placeholder="seu@email.com" autocomplete="email">
                             <p class="hf-error" id="hfEmailError"></p>
-                            <button type="button" class="hf-submit" id="hfSubmit">Receber Meu Orçamento Grátis</button>
+                            <div class="hf-btn-row">
+                                <button type="button" class="hf-back" id="hfBackEmail">Voltar</button>
+                                <button type="button" class="hf-submit" id="hfSubmit">Receber Orçamento</button>
+                            </div>
                         </div>
-                        <p class="hf-disclaimer">Nossa equipe entrará em contato pelo WhatsApp em até 24 horas.</p>
                     </div>
 
                     <!-- Sucesso -->

@@ -395,14 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Hero Inline Form ---
     const heroForm = document.getElementById('heroForm');
     if (heroForm) {
-        const METER_MAP = {
-            Residencial: ['Até 20m', '20 a 50m', 'Acima de 50m', 'Não sei ainda'],
-            Comercial:   ['Até 40m', '40 a 100m', 'Acima de 100m', 'Não sei ainda'],
-            Industrial:  ['Até 100m', '100 a 500m', 'Acima de 500m', 'Não sei ainda'],
-        };
-
         let hfType = '';
-        let hfMeters = '';
 
         const hfAllSteps = heroForm.querySelectorAll('.hf-step');
         const hfBars     = heroForm.querySelectorAll('.hf-bar');
@@ -414,13 +407,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const hfSetProgress = (n) => {
             hfBars.forEach((b, i) => b.classList.toggle('hf-bar--active', i < n));
-            const labelEl = document.getElementById('hfStepLabel');
-            if (labelEl) labelEl.textContent = `Etapa ${n} de 5`;
         };
 
         const hfSnapshot = () => ({
             tipoImovel: hfType,
-            metragem:   hfMeters,
+            metragem:   '',
             nome:       document.getElementById('hfName').value  || '',
             whatsapp:   document.getElementById('hfPhone').value || '',
             email:      document.getElementById('hfEmail').value || '',
@@ -485,38 +476,14 @@ document.addEventListener('DOMContentLoaded', () => {
         heroForm.querySelectorAll('.hf-type-opt').forEach(btn => {
             btn.addEventListener('click', () => {
                 hfType = btn.dataset.value;
-
-                const container = document.getElementById('hfMeterOpts');
-                container.innerHTML = '';
-                METER_MAP[hfType].forEach(val => {
-                    const b = document.createElement('button');
-                    b.type = 'button';
-                    b.className = 'hf-meter-opt';
-                    b.textContent = val;
-                    b.addEventListener('click', () => {
-                        hfMeters = val;
-                        gtag('event', 'form_step_metragem', { 'form_name': 'hero_orcamento', 'etapa': '4_metragem', 'metragem': val });
-                        sendToSheets('etapa-4', hfSnapshot());
-                        hfSetProgress(5);
-                        hfGoTo('hfsEmail');
-                    });
-                    container.appendChild(b);
-                });
-
                 gtag('event', 'form_step_tipo', { 'form_name': 'hero_orcamento', 'etapa': '3_tipo', 'tipo_imovel': hfType });
                 sendToSheets('etapa-3', hfSnapshot());
                 hfSetProgress(4);
-                hfGoTo('hfsMeter');
+                hfGoTo('hfsEmail');
             });
         });
 
-        // Etapa 4 — Metragem (back only; seleção é feita pelos botões gerados acima)
-        document.getElementById('hfBackMeter').addEventListener('click', () => {
-            hfSetProgress(3);
-            hfGoTo('hfsTipo');
-        });
-
-        // Etapa 5 — Email / submit
+        // Etapa 4 — Email / submit
         const hfEmailEl  = document.getElementById('hfEmail');
         const hfEmailErr = document.getElementById('hfEmailError');
         hfEmailEl.addEventListener('input', () => {
@@ -524,8 +491,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) hfEmailErr.textContent = '';
         });
         document.getElementById('hfBackEmail').addEventListener('click', () => {
-            hfSetProgress(4);
-            hfGoTo('hfsMeter');
+            hfSetProgress(3);
+            hfGoTo('hfsTipo');
         });
         document.getElementById('hfSubmit').addEventListener('click', () => {
             const v = hfEmailEl.value.trim();
@@ -535,12 +502,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             hfEmailErr.textContent = '';
-            gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '5_conclusao' });
+            gtag('event', 'form_submit', { 'form_name': 'hero_orcamento', 'etapa': '4_conclusao' });
             sendToSheets('completo', hfSnapshot());
             gtag('event', 'conversion', { 'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC' });
             hfGoTo('hfsSuccess');
-            const labelEl = document.getElementById('hfStepLabel');
-            if (labelEl) labelEl.textContent = 'Concluído ✓';
         });
     }
 
