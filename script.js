@@ -633,23 +633,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Hero Form WhatsApp Suggestion Animation
-    const heroWappSuggest = document.querySelector('.hf-wapp-suggest');
-    const hfNameInput = document.getElementById('hfName');
-    
-    if (heroWappSuggest) {
-        const showHeroSuggest = () => {
-            if (!heroWappSuggest.classList.contains('active')) {
-                heroWappSuggest.classList.add('active');
-            }
-        };
-
-        // Automatically show the WhatsApp suggestion card in the Hero form after 2 seconds
-        setTimeout(showHeroSuggest, 2000);
-
-        // Or immediately when the user focuses on the name input field
-        if (hfNameInput) {
-            hfNameInput.addEventListener('focus', showHeroSuggest);
-        }
-    }
 });
+
