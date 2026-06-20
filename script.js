@@ -263,11 +263,17 @@ document.addEventListener('DOMContentLoaded', () => {
             `E-mail: ${data.email || '—'}`,
         ].join('\n');
 
-        fetch(`https://api.trello.com/1/cards?key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idList: TRELLO_LIST, name: data.nome, desc }),
-        }).catch(() => {});
+        const params = new URLSearchParams({
+            key:    TRELLO_KEY,
+            token:  TRELLO_TOKEN,
+            idList: TRELLO_LIST,
+            name:   data.nome,
+            desc,
+        });
+
+        fetch(`https://api.trello.com/1/cards?${params}`, { method: 'POST' })
+            .then(r => { if (!r.ok) r.text().then(t => console.error('Trello:', t)); })
+            .catch(e => console.error('Trello fetch error:', e));
     };
 
     nextBtns.forEach(btn => {
