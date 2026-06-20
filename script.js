@@ -611,14 +611,26 @@ document.addEventListener('DOMContentLoaded', () => {
             wappOnlineBadge.classList.add('visible');
         }
 
-        // Close button: persist dismissal and activate badge
-        closeWappTooltip.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
+        const dismissTooltip = () => {
             wappTooltip.classList.remove('active');
             localStorage.setItem('wappTooltipDismissed', 'true');
             if (wappOnlineBadge) wappOnlineBadge.classList.add('visible');
+        };
+
+        // Close button
+        closeWappTooltip.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            dismissTooltip();
         });
+
+        // Clicking "Falar Agora" also dismisses the tooltip
+        const wappTooltipCta = document.getElementById('wappTooltipCta');
+        if (wappTooltipCta) {
+            wappTooltipCta.addEventListener('click', () => {
+                setTimeout(dismissTooltip, 300);
+            });
+        }
     }
 
     // Hero Form WhatsApp Suggestion Animation
