@@ -619,22 +619,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (waPanelClose) waPanelClose.addEventListener('click', closeWidget);
         if (waPanelCta) waPanelCta.addEventListener('click', () => setTimeout(closeWidget, 400));
 
-        if (!localStorage.getItem('waWidgetSeen')) {
-            hintTimer = setTimeout(() => { if (!isOpen && waHint) waHint.classList.add('visible'); }, 3000);
-            autoOpenTimer = setTimeout(() => { if (!isOpen) openWidget(); }, 6000);
+        hintTimer = setTimeout(() => { if (!isOpen && waHint) waHint.classList.add('visible'); }, 3000);
+        autoOpenTimer = setTimeout(() => { if (!isOpen) openWidget(); }, 5000);
 
-            const heroSection = document.getElementById('hero');
-            if (heroSection) {
-                const heroObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (!entry.isIntersecting && !isOpen) {
-                            openWidget();
-                            heroObserver.disconnect();
-                        }
-                    });
-                }, { threshold: 0 });
-                heroObserver.observe(heroSection);
-            }
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting && !isOpen) {
+                        openWidget();
+                        heroObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0 });
+            heroObserver.observe(heroSection);
         }
     }
 
