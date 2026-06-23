@@ -1630,15 +1630,17 @@ ul {
 }
 
 .marquee-img {
-    width: auto;
-    height: 130px;
+    width: 160px;
+    height: 52px;
     object-fit: contain;
     display: block;
-    transition: transform 0.3s ease;
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .marquee-card:hover .marquee-img {
-    transform: scale(1.05); /* Pequeno destaque mantendo a logo limpa */
+    opacity: 1;
+    transform: scale(1.06);
 }
 
 @keyframes marqueeSlide {
@@ -4013,10 +4015,11 @@ ul {
         padding: 2rem 0;
     }
     .marquee-img {
-        height: 80px;
+        width: 110px;
+        height: 36px;
     }
     .marquee-card {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
     }
 
     /* --- DIFERENCIAIS --- */
