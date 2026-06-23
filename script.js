@@ -619,8 +619,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (waPanelClose) waPanelClose.addEventListener('click', closeWidget);
         if (waPanelCta) waPanelCta.addEventListener('click', () => setTimeout(closeWidget, 400));
 
-        hintTimer = setTimeout(() => { if (!isOpen && waHint) waHint.classList.add('visible'); }, 3000);
-        autoOpenTimer = setTimeout(() => { if (!isOpen) openWidget(); }, 5000);
+        let formStarted = false;
+        document.querySelectorAll('#hero input, #hero select, #hero textarea').forEach(el =>
+            el.addEventListener('focus', () => { formStarted = true; }, { once: true })
+        );
+
+        hintTimer = setTimeout(() => { if (!isOpen && !formStarted && waHint) waHint.classList.add('visible'); }, 7000);
+        autoOpenTimer = setTimeout(() => { if (!isOpen && !formStarted) openWidget(); }, 10000);
 
         const heroSection = document.getElementById('hero');
         if (heroSection) {
