@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Direct WhatsApp and Modal trigger click tracking
-    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], .js-open-modal, .mockup-cta-btn, .floating-whatsapp');
+    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], .js-open-modal, .mockup-cta-btn');
     whatsappElements.forEach(element => {
         element.addEventListener('click', () => {
             // Se o elemento é para abrir o modal, não redirecionamos direto para o WhatsApp no clique
@@ -561,64 +561,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- WhatsApp Floating Tooltip & Hero Suggestion Interactions ---
-    const wappTooltip = document.getElementById('wappTooltip');
-    const closeWappTooltip = document.getElementById('closeWappTooltip');
-    const floatingWappBtn = document.querySelector('.floating-whatsapp');
-    const wappOnlineBadge = document.getElementById('wappOnlineBadge');
+    // --- WhatsApp Chat Widget ---
+    const waWidget   = document.getElementById('waWidget');
+    const waPanel    = document.getElementById('waPanel');
+    const waTrigger  = document.getElementById('waTrigger');
+    const waPanelClose = document.getElementById('waPanelClose');
+    const waHint     = document.getElementById('waHint');
+    const waTyping   = document.getElementById('waTyping');
+    const waBubble   = document.getElementById('waBubble');
+    const waPanelCta = document.getElementById('waPanelCta');
 
-    if (wappTooltip && closeWappTooltip && floatingWappBtn) {
-        let tooltipShown = false;
+    if (waWidget && waTrigger) {
+        let isOpen = false;
+        let typingPlayed = false;
+        let hintTimer = null;
+        let autoOpenTimer = null;
 
-        const showWappTooltip = () => {
-            if (tooltipShown || wappTooltip.classList.contains('active')) return;
-            tooltipShown = true;
-            wappTooltip.classList.add('active');
-            floatingWappBtn.classList.add('wapp-attention-bounce');
-            setTimeout(() => floatingWappBtn.classList.remove('wapp-attention-bounce'), 1600);
+        const playTypingAnimation = () => {
+            if (typingPlayed) {
+                if (waBubble) waBubble.classList.add('visible');
+                return;
+            }
+            typingPlayed = true;
+            if (waTyping) waTyping.style.display = 'flex';
+            if (waBubble) { waBubble.style.display = 'none'; waBubble.classList.remove('visible'); }
+            setTimeout(() => {
+                if (waTyping) waTyping.style.display = 'none';
+                if (waBubble) {
+                    waBubble.style.display = 'block';
+                    requestAnimationFrame(() => requestAnimationFrame(() => waBubble.classList.add('visible')));
+                }
+            }, 1600);
         };
 
-        if (!localStorage.getItem('wappTooltipDismissed')) {
-            // Timer trigger — whichever fires first wins
-            setTimeout(showWappTooltip, 4000);
+        const openWidget = () => {
+            if (isOpen) return;
+            isOpen = true;
+            waWidget.classList.add('open');
+            waTrigger.setAttribute('aria-expanded', 'true');
+            if (waPanel) waPanel.setAttribute('aria-hidden', 'false');
+            if (waHint) waHint.classList.remove('visible');
+            clearTimeout(hintTimer);
+            clearTimeout(autoOpenTimer);
+            localStorage.setItem('waWidgetSeen', 'true');
+            playTypingAnimation();
+        };
 
-            // Scroll trigger — fires when hero section leaves the viewport
+        const closeWidget = () => {
+            if (!isOpen) return;
+            isOpen = false;
+            waWidget.classList.remove('open');
+            waTrigger.setAttribute('aria-expanded', 'false');
+            if (waPanel) waPanel.setAttribute('aria-hidden', 'true');
+        };
+
+        waTrigger.addEventListener('click', () => isOpen ? closeWidget() : openWidget());
+        if (waPanelClose) waPanelClose.addEventListener('click', closeWidget);
+        if (waPanelCta) waPanelCta.addEventListener('click', () => setTimeout(closeWidget, 400));
+
+        if (!localStorage.getItem('waWidgetSeen')) {
+            hintTimer = setTimeout(() => { if (!isOpen && waHint) waHint.classList.add('visible'); }, 3000);
+            autoOpenTimer = setTimeout(() => { if (!isOpen) openWidget(); }, 6000);
+
             const heroSection = document.getElementById('hero');
             if (heroSection) {
                 const heroObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (!entry.isIntersecting) {
-                            showWappTooltip();
+                        if (!entry.isIntersecting && !isOpen) {
+                            openWidget();
                             heroObserver.disconnect();
                         }
                     });
                 }, { threshold: 0 });
                 heroObserver.observe(heroSection);
             }
-        } else if (wappOnlineBadge) {
-            // Previously dismissed — show persistent online badge immediately
-            wappOnlineBadge.classList.add('visible');
-        }
-
-        const dismissTooltip = () => {
-            wappTooltip.classList.remove('active');
-            localStorage.setItem('wappTooltipDismissed', 'true');
-            if (wappOnlineBadge) wappOnlineBadge.classList.add('visible');
-        };
-
-        // Close button
-        closeWappTooltip.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            dismissTooltip();
-        });
-
-        // Clicking "Falar Agora" also dismisses the tooltip
-        const wappTooltipCta = document.getElementById('wappTooltipCta');
-        if (wappTooltipCta) {
-            wappTooltipCta.addEventListener('click', () => {
-                setTimeout(dismissTooltip, 300);
-            });
         }
     }
 
