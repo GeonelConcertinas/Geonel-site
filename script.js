@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Clique em qualquer link de WhatsApp
-    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], .mockup-cta-btn');
+    const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     whatsappElements.forEach(element => {
         element.addEventListener('click', () => {
             window.dataLayer = window.dataLayer || [];

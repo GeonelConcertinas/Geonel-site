@@ -1742,6 +1742,9 @@ ul {
 
 /* --- Responsive Design --- */
 @media (max-width: 1200px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .hero-title {
         font-size: 2.9rem;
     }
@@ -2736,15 +2739,12 @@ ul {
 }
 
 .testimonials-layout {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 2rem;
-    align-items: start;
+    display: block;
 }
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
@@ -2918,12 +2918,6 @@ ul {
     color: #ffffff;
 }
 
-.testimonials-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
 .testimonial-cred-block {
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
@@ -2932,6 +2926,25 @@ ul {
     padding: 2rem;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-cred-block--bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 3rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial-cred-block--bar .cred-rating-row,
+.testimonial-cred-block--bar .cred-stats-row {
+    margin-bottom: 0;
+}
+
+.testimonial-cred-block--bar .cred-label {
+    margin-bottom: 0;
 }
 
 .cred-rating-row {
@@ -2985,73 +2998,6 @@ ul {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* WhatsApp Mockup Dark Mode */
-.whatsapp-mockup {
-    background: #0b141a; /* WhatsApp Web Dark Mode background */
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.mockup-header {
-    background: #202c33; /* Dark mode header */
-    color: #e9edef;
-    padding: 1rem 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.mockup-user-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.mockup-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #00a884; /* WhatsApp logo green */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.mockup-name {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #e9edef;
-}
-
-.mockup-status {
-    font-size: 0.72rem;
-    color: #53bdeb; /* Light blue online text */
-    font-weight: 500;
-}
-
-.mockup-header-actions {
-    color: #aebac1;
-    display: flex;
-    align-items: center;
-}
-
-.mockup-body {
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    min-height: 240px;
-    background-image: linear-gradient(rgba(11, 20, 26, 0.96), rgba(11, 20, 26, 0.96)),
-                      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zM11 68c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm58-12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM32 30c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm3-15c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm-3 48c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm30-17c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-}
-
 .message {
     max-width: 85%;
     padding: 0.65rem 0.85rem;
@@ -3097,41 +3043,6 @@ ul {
 
 .outgoing .message-time svg {
     color: #53bdeb; /* Blue checkmarks */
-}
-
-.mockup-footer {
-    padding: 1rem 1.25rem;
-    background: #111b21;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.mockup-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.65rem;
-    padding: 0.8rem 1.75rem;
-    background: #00a884;
-    color: #ffffff;
-    border-radius: 9999px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-decoration: none;
-    width: 100%;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 15px rgba(0, 168, 132, 0.2);
-}
-
-.mockup-cta-btn:hover {
-    background: #00bfa5;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 168, 132, 0.35);
-}
-
-.mockup-cta-btn svg {
-    width: 18px;
-    height: 18px;
 }
 
 /* ==== product-tag position fix ==== */
@@ -3548,10 +3459,7 @@ ul {
     .testimonial-card {
         padding: 1.5rem;
     }
-    .testimonials-sidebar {
-        width: 100%;
-    }
-    .testimonials-platforms-bar {
+        .testimonials-platforms-bar {
         margin: -3rem auto 3.5rem auto;
         gap: 1rem;
         flex-direction: column;
