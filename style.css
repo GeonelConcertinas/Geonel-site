@@ -538,7 +538,7 @@ ul {
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3.2rem;
     font-weight: 800;
     color: var(--text-main);
     margin-bottom: 1.5rem;
@@ -839,7 +839,7 @@ ul {
     border-radius: 24px;
     overflow: hidden;
     background: #0B132B;
-    animation: stackCarousel 16s infinite;
+    animation: stackCarousel 6.8s infinite;
 }
 
 .hero-carousel-card img {
@@ -850,9 +850,9 @@ ul {
 
 /* Animations Negative Delays */
 .slide-card-1 { animation-delay: 0s; }
-.slide-card-2 { animation-delay: -12s; }
-.slide-card-3 { animation-delay: -8s; }
-.slide-card-4 { animation-delay: -4s; }
+.slide-card-2 { animation-delay: -5.1s; }
+.slide-card-3 { animation-delay: -3.4s; }
+.slide-card-4 { animation-delay: -1.7s; }
 
 @keyframes stackCarousel {
     /* POS 1 - Main Active (0% - 15%) */
@@ -2139,7 +2139,7 @@ ul {
 /* --- Responsive Design --- */
 @media (max-width: 1200px) {
     .hero-title {
-        font-size: 4rem;
+        font-size: 2.9rem;
     }
     .section-title {
         font-size: 3rem;
@@ -2308,7 +2308,7 @@ ul {
     }
     
     .hero-title {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
     }
 
     .hero-highlight {
@@ -3972,8 +3972,8 @@ ul {
         margin: 0 auto 3rem;
     }
     .hero-title {
-        font-size: 2.4rem;
-        line-height: 1.15;
+        font-size: 2.1rem;
+        line-height: 1.18;
     }
     .hero-highlight {
         font-size: 2.8rem;
@@ -4327,7 +4327,7 @@ ul {
 /* Extra small phones */
 @media (max-width: 390px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.85rem;
     }
     .hero-highlight {
         font-size: 2.3rem;

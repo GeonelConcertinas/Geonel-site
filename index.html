@@ -111,80 +111,14 @@ function gtag_report_conversion(url) {
                     <span class="badge-dot"></span>
                     <span id="badge-text" class="fade-text">Segurança Perimetral Premium</span>
                 </div>
-                <h1 class="hero-title">Sua casa segura.<br>Sua família <br><span class="italic-accent hero-highlight">tranquila.</span></h1>
+                <h1 class="hero-title">Cercas de Segurança e Concertina com <span class="italic-accent">Instalação Rápida</span> em todo o RJ.</h1>
                 <p class="hero-subtitle">Há mais de 14 anos instalando sistemas de segurança perimetral em residências e empresas no Rio de Janeiro. Proteção real, atendimento rápido e preço justo.</p>
-                <!-- Formulário inline de captação -->
-                <div class="hero-form" id="heroForm">
-                    <p class="hf-form-title" id="hfFormTitle">Solicite seu Orçamento</p>
-                    <div class="hf-progress">
-                        <div class="hf-bar hf-bar--active"></div>
-                        <div class="hf-bar"></div>
-                        <div class="hf-bar"></div>
-                        <div class="hf-bar"></div>
-                    </div>
-
-                    <!-- Etapa 1: Nome -->
-                    <div class="hf-step hf-step--active" id="hfsNome">
-                        <div class="hf-field">
-                            <input type="text" id="hfName" class="hf-input" placeholder="Nome" autocomplete="name">
-                            <p class="hf-error" id="hfNameError"></p>
-                            <button type="button" class="hf-next" id="hfNextNome">Próximo</button>
-                        </div>
-
-                    </div>
-
-                    <!-- Etapa 2: WhatsApp -->
-                    <div class="hf-step" id="hfsWapp">
-                        <div class="hf-field">
-                            <input type="tel" id="hfPhone" class="hf-input" placeholder="(00) 00000-0000" inputmode="numeric" maxlength="15" autocomplete="tel">
-                            <p class="hf-error" id="hfPhoneError"></p>
-                            <div class="hf-btn-row">
-                                <button type="button" class="hf-back" id="hfBackWapp">Voltar</button>
-                                <button type="button" class="hf-next" id="hfNextWapp">Próximo</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Etapa 3: Tipo de instalação -->
-                    <div class="hf-step" id="hfsTipo">
-                        <div class="hf-type-options">
-                            <button type="button" class="hf-type-opt" data-value="Residencial">
-                                Residencial
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 0-2-2z"/></svg>
-                            </button>
-                            <button type="button" class="hf-type-opt" data-value="Comercial">
-                                Comercial
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22v-6.57"/><path d="M12 11h.01"/><path d="M12 7h.01"/><path d="M14 15.43V22"/><path d="M15 16a5 5 0 0 0-6 0"/><path d="M16 11h.01"/><path d="M16 7h.01"/><path d="M8 11h.01"/><path d="M8 7h.01"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
-                            </button>
-                            <button type="button" class="hf-type-opt" data-value="Industrial">
-                                Industrial
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16h.01"/><path d="M16 16h.01"/><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M8 16h.01"/></svg>
-                            </button>
-                        </div>
-                        <div class="hf-btn-row hf-btn-row--solo" style="margin-top:0.75rem;">
-                            <button type="button" class="hf-back" id="hfBackTipo">Voltar</button>
-                        </div>
-                    </div>
-
-                    <!-- Etapa 4: Email -->
-                    <div class="hf-step" id="hfsEmail">
-                        <div class="hf-field">
-                            <input type="email" id="hfEmail" class="hf-input" placeholder="seu@email.com" autocomplete="email">
-                            <p class="hf-error" id="hfEmailError"></p>
-                            <div class="hf-btn-row">
-                                <button type="button" class="hf-back" id="hfBackEmail">Voltar</button>
-                                <button type="button" class="hf-submit" id="hfSubmit">Receber Orçamento</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sucesso -->
-                    <div class="hf-step" id="hfsSuccess">
-                        <div class="hf-success">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                            <p class="hf-success-msg">Recebido! Entraremos em contato pelo seu WhatsApp em até 24 horas.</p>
-                        </div>
-                    </div>
+                <!-- CTA principal: WhatsApp -->
+                <div class="hero-buttons">
+                    <a href="https://api.whatsapp.com/send?phone=5521974372750" class="btn btn-primary btn-large hero-wa-btn" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.83 9.83 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.8 11.8 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.688 1.449h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg>
+                        Quero um orçamento grátis
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -248,113 +182,158 @@ function gtag_report_conversion(url) {
         </div>
     </div>
 
-    <!-- Diferenciais -->
-    <section class="section differentials" id="diferenciais">
-        <div class="container">
-            <div class="section-header-left">
-                <span class="eyebrow">Por que escolher a Geonel?</span>
-                <h2 class="section-title">O que nos<br><span class="italic-accent">diferencia</span></h2>
-                <p class="section-subtitle mt-4">Não somos só mais uma empresa de sistemas de segurança perimetral. Cada instalação é tratada com atenção, responsabilidade e o cuidado que o seu imóvel merece.</p>
-            </div>
-            <div class="feature-grid mt-6">
-                <div class="feature-card light-card reveal">
-                    <div class="card-text-area">
-                        <h3 class="card-title">Segurança que Intimida</h3>
-                        <p class="card-text">Lâminas de aço de alta resistência que funcionam como barreira real visível, eficiente e difícil de ignorar.</p>
-                    </div>
-                    <div class="artifact status-artifact">
-                        <div class="status-indicator">
-                            <span class="pulse-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 7-3.81 8-3.81s6 2.81 8 3.81a1 1 0 0 1 1 1v7z"/><path d="m9 12 2 2 4-4"/></svg>
-                            </span>
-                        </div>
-                        <div class="status-panel">
-                            <span class="status-label">STATUS</span>
-                            <div class="status-bar"><span class="status-value">Proteção Ativa</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature-card dark-card reveal" style="transition-delay: 100ms;">
-                    <div class="card-text-area card-header-dark">
-                        <h3 class="card-title">Atendimento<br>Rápido</h3>
-                        <div class="live-feed-badge"><span class="pulse-red"></span> DISPONÍVEL</div>
-                    </div>
-                    <p class="card-text dark-text-muted mt-2">Orçamento no mesmo dia. Instalação ágil, sem enrolação e com prazo cumprido.</p>
-                    <div class="artifact terminal-artifact mt-4">
-                        <ul class="terminal-text">
-                            <li>> Iniciando vistoria...</li>
-                            <li>> Analisando área...</li>
-                            <li>> Aplicando concertina...</li>
-                            <li>> Setor assegurado.</li>
-                            <li class="cursor">> Concluído_</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="feature-card light-card reveal" style="transition-delay: 200ms;">
-                    <div class="card-text-area card-header-flex">
-                        <h3 class="card-title">Valoriza seu<br>Imóvel</h3>
-                        <span class="card-icon-small">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                        </span>
-                    </div>
-                    <p class="card-text">Além de proteger, sistemas de segurança perimetral bem instalados aumentam a percepção de valor do seu imóvel em mais de 35%.</p>
-                    <div class="artifact chart-artifact mt-4">
-                        <div class="chart-bars">
-                            <div class="chart-bar bar-1"></div>
-                            <div class="chart-bar bar-2"></div>
-                            <div class="chart-bar bar-3"></div>
-                            <div class="chart-bar bar-active"><span class="bar-value">+35%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sobre Nós -->
-    <section class="section" id="sobre">
+
+
+    
+    <!-- Produtos Section - Final Redesign -->
+    <section class="section products-section" id="produtos">
         <div class="container">
-            <div class="sticky-layout">
-                <div class="sticky-media">
-                    <div class="sticky-image-box">
-                        <img src="assets/img/logo-color-variant-1.svg" alt="Logo Geonel Segurança Perimetral">
-                    </div>
-                </div>
-                <div class="scroll-narrative">
-                    <div class="scroll-block">
-                        <span class="eyebrow block-eyebrow">Quem Somos</span>
-                        <h2 class="section-title">Há mais de 14 anos <br><span class="italic-accent hero-highlight" style="font-size: 3.5rem;">protegendo o RJ</span></h2>
-                        <p class="block-text">A Geonel nasceu no Rio de Janeiro e cresceu instalando sistemas de segurança perimetral em casas, condomínios e empresas que queriam segurança de verdade. Somos especializados nisso e só nisso. Cada instalação recebe a mesma atenção, seja um portão residencial ou um grande galpão industrial.</p>
-                    </div>
-                    <div class="scroll-block">
-                        <div class="block-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                        </div>
-                        <h3 class="block-title">O que a gente acredita</h3>
-                        <p class="block-text">Acreditamos que segurança não precisa ser feia nem cara demais. Por isso usamos materiais de primeira linha, com acabamento cuidadoso, para que a proteção do seu imóvel seja eficiente e ainda valorize o espaço.</p>
-                    </div>
-                    <div class="scroll-block">
-                        <div class="block-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 7-3.81 8-3.81s6 2.81 8 3.81a1 1 0 0 1 1 1v7z"/><path d="M12 22V2"/></svg>
-                        </div>
-                        <h3 class="block-title">O que valorizamos</h3>
-                        <p class="block-text">Honestidade no orçamento, pontualidade na instalação e respeito ao seu imóvel. Trabalhamos como se fosse na nossa própria casa com cuidado, capricho e sem deixar bagunça.</p>
-                    </div>
-                    <div class="scroll-block">
-                        <div class="block-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                        </div>
-                        <h3 class="block-title">Nosso compromisso com você</h3>
-                        <p class="block-text" style="margin-bottom: 1.5rem;">Cada instalação feita pela Geonel segue um padrão que não abrimos mão:</p>
-                        <ul class="block-list">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Equipe treinada:</strong> Profissionais experientes que respeitam seu espaço.</span></li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Atendimento humano:</strong> Tiramos todas as suas dúvidas antes, durante e depois.</span></li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Material de qualidade:</strong> sistemas de segurança perimetral duráveis, sem enferrujamento precoce.</span></li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Satisfação garantida:</strong> Só encerramos o serviço quando você estiver satisfeito.</span></li>
-                        </ul>
-                    </div>
-                </div>
+
+            <!-- Header -->
+            <div class="products-header reveal">
+                <span class="eyebrow">Catálogo Completo</span>
+                <h2 class="section-title">O que a Geonel<br><span class="italic-accent">instala para você</span></h2>
+                <p class="section-subtitle">Soluções de segurança e proteção perimetral prontas para instalação. Peça seu orçamento pelo WhatsApp e receba resposta no mesmo dia.</p>
             </div>
+
+            <!-- Filtros -->
+            <div class="products-filter reveal">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="concertina">sistemas de segurança perimetral</button>
+                <button class="filter-btn" data-filter="fechamento">Fechamento</button>
+            </div>
+
+            <!-- Grid de Produtos -->
+            <div class="products-grid" id="productsGrid">
+
+                <div class="product-card reveal" data-category="concertina">
+                    <span class="product-tag">Mais Instalado</span>
+                    <div class="product-card__img">
+                        <img src="assets/img/concertina-simples.jpg" alt="Concertina Simples" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Simples">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Concertina Simples</h3>
+                        <p class="product-desc">A solução mais popular para proteção de muros, grades e telhados.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Simples">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="concertina" style="transition-delay:80ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/concertina-dupla.webp" alt="Concertina Dupla" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Dupla">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Concertina Dupla</h3>
+                        <p class="product-desc">Dupla proteção para perímetros de maior risco. Resistência reforçada.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Dupla">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="concertina" style="transition-delay:160ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/concertina-flat.webp" alt="Concertina Flat" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Flat">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Concertina Flat</h3>
+                        <p class="product-desc">Perfil discreto e design limpo. Ideal para condomínios e residências.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Flat">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="fechamento" style="transition-delay:80ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/rede-laminada.webp" alt="Rede Laminada" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Rede Laminada">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Rede Laminada</h3>
+                        <p class="product-desc">Barreira física robusta para cercas e muros. Aço laminado de alta resistência.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Rede Laminada">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="fechamento" style="transition-delay:160ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/lanca-protetora.webp" alt="Lança Protetora" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Lança Protetora">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Lança Protetora</h3>
+                        <p class="product-desc">Acabamento em aço inoxidável com visual intimidador e proteção eficaz.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Lança Protetora">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="fechamento" style="transition-delay:240ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/alambrado.webp" alt="Alambrado" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Alambrado">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Alambrado</h3>
+                        <p class="product-desc">Cercamento em tela metálica galvanizada para grandes áreas industriais e esportivas.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Alambrado">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="fechamento" style="transition-delay:320ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/alambrado-verde-pvc.webp" alt="Alambrado Verde PVC" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Alambrado Verde PVC">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Alambrado Verde PVC</h3>
+                        <p class="product-desc">Acabamento em PVC verde que reduz oxidação e integra ao ambiente natural.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Alambrado Verde PVC">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-category="fechamento" style="transition-delay:400ms">
+                    <div class="product-card__img">
+                        <img src="assets/img/produtos/gradil-total-pvc.webp" alt="Gradil Total PVC" loading="lazy">
+                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Gradil Total PVC">Solicitar Orçamento</a></div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-name">Gradil Total PVC</h3>
+                        <p class="product-desc">Gradil moderno com revestimento em PVC. Estético, durável e resistente à corrosão.</p>
+                    
+                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Gradil Total PVC">Solicitar Orçamento</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Google Photos Banner -->
+            <div class="google-photos-banner reveal">
+                <div class="g-photos-icon">
+                    <svg viewBox="0 0 256 256" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#4285F4" d="M128 25c19.3 0 35 15.7 35 35v53h-53c-19.3 0-35-15.7-35-35s15.7-35 35-35z"/>
+                        <path fill="#0F9D58" d="M231 128c0 19.3-15.7 35-35 35h-53v-35c0-19.3 15.7-35 35-35s35 15.7 35 35z"/>
+                        <path fill="#F4B400" d="M128 231c-19.3 0-35-15.7-35-35v-53h53c19.3 0 35 15.7 35 35s-15.7 35-35 35z"/>
+                        <path fill="#DB4437" d="M25 128c0-19.3 15.7-35 35-35h53v35c0 19.3-15.7 35-35 35s-35-15.7-35-35z"/>
+                    </svg>
+                </div>
+                <div class="g-photos-content">
+                    <h3 class="g-photos-title">Veja instalações reais da Geonel</h3>
+                    <p class="g-photos-text">Antes de fechar qualquer negócio, veja o nosso trabalho com seus próprios olhos. Temos centenas de fotos de instalações reais em casas, empresas e condomínios no Rio de Janeiro.</p>
+                </div>
+                <a href="https://photos.app.goo.gl/XkquhTT7YZgKrYfi6" class="btn btn-secondary g-photos-btn" target="_blank" rel="noopener noreferrer">
+                    📷 Ver Fotos dos Projetos
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -587,157 +566,116 @@ function gtag_report_conversion(url) {
         </div>
     </section>
 
-    <!-- Produtos Section - Final Redesign -->
-    <section class="section products-section" id="produtos">
+    <!-- Diferenciais -->
+    <section class="section differentials" id="diferenciais">
         <div class="container">
-
-            <!-- Header -->
-            <div class="products-header reveal">
-                <span class="eyebrow">Catálogo Completo</span>
-                <h2 class="section-title">O que a Geonel<br><span class="italic-accent">instala para você</span></h2>
-                <p class="section-subtitle">Soluções de segurança e proteção perimetral prontas para instalação. Peça seu orçamento pelo WhatsApp e receba resposta no mesmo dia.</p>
+            <div class="section-header-left">
+                <span class="eyebrow">Por que escolher a Geonel?</span>
+                <h2 class="section-title">O que nos<br><span class="italic-accent">diferencia</span></h2>
+                <p class="section-subtitle mt-4">Não somos só mais uma empresa de sistemas de segurança perimetral. Cada instalação é tratada com atenção, responsabilidade e o cuidado que o seu imóvel merece.</p>
             </div>
-
-            <!-- Filtros -->
-            <div class="products-filter reveal">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="concertina">sistemas de segurança perimetral</button>
-                <button class="filter-btn" data-filter="fechamento">Fechamento</button>
+            <div class="feature-grid mt-6">
+                <div class="feature-card light-card reveal">
+                    <div class="card-text-area">
+                        <h3 class="card-title">Segurança que Intimida</h3>
+                        <p class="card-text">Lâminas de aço de alta resistência que funcionam como barreira real visível, eficiente e difícil de ignorar.</p>
+                    </div>
+                    <div class="artifact status-artifact">
+                        <div class="status-indicator">
+                            <span class="pulse-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 7-3.81 8-3.81s6 2.81 8 3.81a1 1 0 0 1 1 1v7z"/><path d="m9 12 2 2 4-4"/></svg>
+                            </span>
+                        </div>
+                        <div class="status-panel">
+                            <span class="status-label">STATUS</span>
+                            <div class="status-bar"><span class="status-value">Proteção Ativa</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card dark-card reveal" style="transition-delay: 100ms;">
+                    <div class="card-text-area card-header-dark">
+                        <h3 class="card-title">Atendimento<br>Rápido</h3>
+                        <div class="live-feed-badge"><span class="pulse-red"></span> DISPONÍVEL</div>
+                    </div>
+                    <p class="card-text dark-text-muted mt-2">Orçamento no mesmo dia. Instalação ágil, sem enrolação e com prazo cumprido.</p>
+                    <div class="artifact terminal-artifact mt-4">
+                        <ul class="terminal-text">
+                            <li>> Iniciando vistoria...</li>
+                            <li>> Analisando área...</li>
+                            <li>> Aplicando concertina...</li>
+                            <li>> Setor assegurado.</li>
+                            <li class="cursor">> Concluído_</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-card light-card reveal" style="transition-delay: 200ms;">
+                    <div class="card-text-area card-header-flex">
+                        <h3 class="card-title">Valoriza seu<br>Imóvel</h3>
+                        <span class="card-icon-small">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        </span>
+                    </div>
+                    <p class="card-text">Além de proteger, sistemas de segurança perimetral bem instalados aumentam a percepção de valor do seu imóvel em mais de 35%.</p>
+                    <div class="artifact chart-artifact mt-4">
+                        <div class="chart-bars">
+                            <div class="chart-bar bar-1"></div>
+                            <div class="chart-bar bar-2"></div>
+                            <div class="chart-bar bar-3"></div>
+                            <div class="chart-bar bar-active"><span class="bar-value">+35%</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Grid de Produtos -->
-            <div class="products-grid" id="productsGrid">
-
-                <div class="product-card reveal" data-category="concertina">
-                    <span class="product-tag">Mais Instalado</span>
-                    <div class="product-card__img">
-                        <img src="assets/img/concertina-simples.jpg" alt="Concertina Simples" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Simples">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Concertina Simples</h3>
-                        <p class="product-desc">A solução mais popular para proteção de muros, grades e telhados.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Simples">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="concertina" style="transition-delay:80ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/concertina-dupla.webp" alt="Concertina Dupla" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Dupla">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Concertina Dupla</h3>
-                        <p class="product-desc">Dupla proteção para perímetros de maior risco. Resistência reforçada.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Dupla">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="concertina" style="transition-delay:160ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/concertina-flat.webp" alt="Concertina Flat" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Concertina Flat">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Concertina Flat</h3>
-                        <p class="product-desc">Perfil discreto e design limpo. Ideal para condomínios e residências.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Concertina Flat">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="fechamento" style="transition-delay:80ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/rede-laminada.webp" alt="Rede Laminada" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Rede Laminada">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Rede Laminada</h3>
-                        <p class="product-desc">Barreira física robusta para cercas e muros. Aço laminado de alta resistência.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Rede Laminada">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="fechamento" style="transition-delay:160ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/lanca-protetora.webp" alt="Lança Protetora" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Lança Protetora">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Lança Protetora</h3>
-                        <p class="product-desc">Acabamento em aço inoxidável com visual intimidador e proteção eficaz.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Lança Protetora">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="fechamento" style="transition-delay:240ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/alambrado.webp" alt="Alambrado" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Alambrado">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Alambrado</h3>
-                        <p class="product-desc">Cercamento em tela metálica galvanizada para grandes áreas industriais e esportivas.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Alambrado">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="fechamento" style="transition-delay:320ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/alambrado-verde-pvc.webp" alt="Alambrado Verde PVC" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Alambrado Verde PVC">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Alambrado Verde PVC</h3>
-                        <p class="product-desc">Acabamento em PVC verde que reduz oxidação e integra ao ambiente natural.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Alambrado Verde PVC">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-                <div class="product-card reveal" data-category="fechamento" style="transition-delay:400ms">
-                    <div class="product-card__img">
-                        <img src="assets/img/produtos/gradil-total-pvc.webp" alt="Gradil Total PVC" loading="lazy">
-                        <div class="product-card__overlay"><a href="#budgetModal" class="product-cta-btn js-open-modal" data-product="Gradil Total PVC">Solicitar Orçamento</a></div>
-                    </div>
-                    <div class="product-card__body">
-                        <h3 class="product-name">Gradil Total PVC</h3>
-                        <p class="product-desc">Gradil moderno com revestimento em PVC. Estético, durável e resistente à corrosão.</p>
-                    
-                        <a href="#budgetModal" class="product-cta-btn-mobile js-open-modal" data-product="Gradil Total PVC">Solicitar Orçamento</a>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- Google Photos Banner -->
-            <div class="google-photos-banner reveal">
-                <div class="g-photos-icon">
-                    <svg viewBox="0 0 256 256" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#4285F4" d="M128 25c19.3 0 35 15.7 35 35v53h-53c-19.3 0-35-15.7-35-35s15.7-35 35-35z"/>
-                        <path fill="#0F9D58" d="M231 128c0 19.3-15.7 35-35 35h-53v-35c0-19.3 15.7-35 35-35s35 15.7 35 35z"/>
-                        <path fill="#F4B400" d="M128 231c-19.3 0-35-15.7-35-35v-53h53c19.3 0 35 15.7 35 35s-15.7 35-35 35z"/>
-                        <path fill="#DB4437" d="M25 128c0-19.3 15.7-35 35-35h53v35c0 19.3-15.7 35-35 35s-35-15.7-35-35z"/>
-                    </svg>
-                </div>
-                <div class="g-photos-content">
-                    <h3 class="g-photos-title">Veja instalações reais da Geonel</h3>
-                    <p class="g-photos-text">Antes de fechar qualquer negócio, veja o nosso trabalho com seus próprios olhos. Temos centenas de fotos de instalações reais em casas, empresas e condomínios no Rio de Janeiro.</p>
-                </div>
-                <a href="https://photos.app.goo.gl/XkquhTT7YZgKrYfi6" class="btn btn-secondary g-photos-btn" target="_blank" rel="noopener noreferrer">
-                    📷 Ver Fotos dos Projetos
-                </a>
-            </div>
-
         </div>
     </section>
-    
+
+    <!-- Sobre Nós -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="sticky-layout">
+                <div class="sticky-media">
+                    <div class="sticky-image-box">
+                        <img src="assets/img/logo-color-variant-1.svg" alt="Logo Geonel Segurança Perimetral">
+                    </div>
+                </div>
+                <div class="scroll-narrative">
+                    <div class="scroll-block">
+                        <span class="eyebrow block-eyebrow">Quem Somos</span>
+                        <h2 class="section-title">Há mais de 14 anos <br><span class="italic-accent hero-highlight" style="font-size: 3.5rem;">protegendo o RJ</span></h2>
+                        <p class="block-text">A Geonel nasceu no Rio de Janeiro e cresceu instalando sistemas de segurança perimetral em casas, condomínios e empresas que queriam segurança de verdade. Somos especializados nisso e só nisso. Cada instalação recebe a mesma atenção, seja um portão residencial ou um grande galpão industrial.</p>
+                    </div>
+                    <div class="scroll-block">
+                        <div class="block-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        </div>
+                        <h3 class="block-title">O que a gente acredita</h3>
+                        <p class="block-text">Acreditamos que segurança não precisa ser feia nem cara demais. Por isso usamos materiais de primeira linha, com acabamento cuidadoso, para que a proteção do seu imóvel seja eficiente e ainda valorize o espaço.</p>
+                    </div>
+                    <div class="scroll-block">
+                        <div class="block-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 7-3.81 8-3.81s6 2.81 8 3.81a1 1 0 0 1 1 1v7z"/><path d="M12 22V2"/></svg>
+                        </div>
+                        <h3 class="block-title">O que valorizamos</h3>
+                        <p class="block-text">Honestidade no orçamento, pontualidade na instalação e respeito ao seu imóvel. Trabalhamos como se fosse na nossa própria casa com cuidado, capricho e sem deixar bagunça.</p>
+                    </div>
+                    <div class="scroll-block">
+                        <div class="block-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <h3 class="block-title">Nosso compromisso com você</h3>
+                        <p class="block-text" style="margin-bottom: 1.5rem;">Cada instalação feita pela Geonel segue um padrão que não abrimos mão:</p>
+                        <ul class="block-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Equipe treinada:</strong> Profissionais experientes que respeitam seu espaço.</span></li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Atendimento humano:</strong> Tiramos todas as suas dúvidas antes, durante e depois.</span></li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Material de qualidade:</strong> sistemas de segurança perimetral duráveis, sem enferrujamento precoce.</span></li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Satisfação garantida:</strong> Só encerramos o serviço quando você estiver satisfeito.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="section cta-section">
         <div class="container text-center">
