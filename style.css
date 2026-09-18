@@ -3456,7 +3456,10 @@ ul {
         gap: 1.25rem;
     }
     .product-card__img {
-        aspect-ratio: 16/9;
+        aspect-ratio: 4/3;
+    }
+    .product-card__img img {
+        padding: 0.5rem;
     }
     .product-card__body {
         padding: 1rem 1.25rem 1.25rem;
