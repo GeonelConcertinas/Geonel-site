@@ -202,21 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Google Ads Conversion Tracking ---
-    
-    // Telephone button click tracking
-    const phoneBtn = document.querySelector('.cta-phone-btn');
-    if (phoneBtn) {
-        phoneBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = phoneBtn.getAttribute('href');
-            if (typeof gtag_report_conversion_phone === 'function') {
-                gtag_report_conversion_phone(url);
-            } else {
-                window.location.href = url;
-            }
+    // --- Eventos para o Google Tag Manager ---
+
+    // Clique no botao de telefone
+    document.querySelectorAll('a[href^="tel:"], .cta-phone-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'clique_telefone' });
         });
-    }
+    });
 
     // Cookie consent banner
     const cookieBanner = document.getElementById('cookieBanner');
@@ -230,20 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cookieDecline').addEventListener('click', () => dismissBanner('declined'));
     }
 
-    // Rastreamento de clique nos links de WhatsApp
+    // Clique em qualquer link de WhatsApp
     const whatsappElements = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], .mockup-cta-btn');
     whatsappElements.forEach(element => {
         element.addEventListener('click', () => {
-            if (typeof gtag_report_conversion_whatsapp === 'function') {
-                const url = element.getAttribute('href');
-                if (url && (url.includes('wa.me') || url.includes('api.whatsapp.com'))) {
-                    gtag_report_conversion_whatsapp(url);
-                } else {
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-17942918007/2MvACN2F5LUcEPfm7OtC'
-                    });
-                }
-            }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'clique_whatsapp',
+                origem_clique: element.textContent.trim() || element.getAttribute('aria-label') || 'sem rotulo'
+            });
         });
     });
 
