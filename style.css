@@ -1493,86 +1493,6 @@ ul {
     color: #94a3b8;
 }
 
-/* --- Marquee (Social Proof) --- */
-.marquee-section { background-color: #314160; /* Azul institucional Geonel */
-    padding: 3rem 0;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 3px solid var(--accent-light);
-}
-
-/* Gradient fades nas pontas para um look premium */
-.marquee-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.marquee-container::before,
-.marquee-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-}
-
-.marquee-container::before {
-    left: 0;
-    background: linear-gradient(to right, #314160 0%, transparent 100%);
-}
-
-.marquee-container::after {
-    right: 0;
-    background: linear-gradient(to left, #314160 0%, transparent 100%);
-}
-
-.marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marqueeSlide 40s linear infinite;
-}
-
-.marquee-track:hover {
-    animation-play-state: paused;
-}
-
-.marquee-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    width: auto;
-    padding: 0 2.5rem;
-    margin: 0;
-    flex-shrink: 0;
-}
-
-.marquee-card:hover {
-    transform: translateY(-5px);
-}
-
-.marquee-img {
-    width: 160px;
-    height: 52px;
-    object-fit: contain;
-    display: block;
-    opacity: 0.75;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.marquee-card:hover .marquee-img {
-    opacity: 1;
-    transform: scale(1.06);
-}
-
-@keyframes marqueeSlide {
-    0% { transform: translateX(0); }
-    /* Traduz 50% garantindo que mova exatos 2 grupos */
-    100% { transform: translateX(-50%); } 
-}
-
 /* --- WhatsApp Chat Widget --- */
 .wa-widget {
     position: fixed;
@@ -3191,18 +3111,6 @@ ul {
     }
     .hero-carousel-card {
         width: 220px;
-    }
-
-    /* --- MARQUEE --- */
-    .marquee-section {
-        padding: 2rem 0;
-    }
-    .marquee-img {
-        width: 110px;
-        height: 36px;
-    }
-    .marquee-card {
-        padding: 0 1.25rem;
     }
 
     /* --- DIFERENCIAIS --- */
